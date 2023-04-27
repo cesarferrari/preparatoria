@@ -1,0 +1,163 @@
+
+
+
+header{
+    background: #03A9F4;
+    width: 100%;
+    clear: both;
+    display: table;
+    content: '';
+}
+div{
+
+    width: 400px;
+    height: 450px;
+    border: solid 3px whitesmoke;
+    background-color: black;
+    padding-top: 5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 2em;
+    position: fixed;
+    margin-left: calc(38% - 50px);
+    margin-top: calc(15% - 50px);
+}
+label{
+    color: aliceblue;
+    font-size: large;
+    font-weight: bold;
+}
+h1{
+    text-align: center;
+    color: aliceblue;
+}
+.llave{
+height: 70px;
+width: 110px;
+position: absolute;
+top: 50px;
+border-radius: 50%;
+    background-image: url('imagen/llaves.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin-top: -35%;
+    margin-left: 29%;
+}
+input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+input[type="text"],
+input[type="password"]{
+border: none;
+border-bottom:  1px solid #fff;
+background-color: transparent;
+outline: none;
+height: 40px;
+color: #fff;
+font-size: 25px;
+
+}
+input[type="submit"]{
+
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: #b80f22;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 20px;
+}
+
+a{
+
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 20px;
+    color: darkgray;
+   
+}
+.error{
+
+    background-color: aqua;
+    color:white;
+    padding: 10px;
+    width: 35%;
+    border-radius: 5px;
+}
+body{
+    background: blue;
+}
+@media(max-width:760px){
+    div{
+
+        width: 200px;
+        height: 225px;
+        border: solid 3px whitesmoke;
+        background-color: black;
+        padding-top: 5em;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-bottom: 2em;
+        position: fixed;
+        margin-left: calc(38% - 50px);
+        margin-top: calc(15% - 50px);
+    }
+    label{
+        color: aliceblue;
+        font-size: large;
+        font-weight: bold;
+    }
+    h1{
+        text-align: center;
+        color: aliceblue;
+    }
+    .llave{
+    height: 50px;
+    width: 80px;
+    position: absolute;
+    top: 40px;
+    
+    border-radius: 50%;
+        background-image: url('imagen/llaves.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        margin-top: -35%;
+        margin-left: 29%;
+    }
+    input{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    input[type="text"],
+    input[type="password"]{
+    border: none;
+    border-bottom:  1px solid #fff;
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 25px;
+    
+    }
+    input[type="submit"]{
+    
+        border: none;
+        outline: none;
+        height: 30px;
+        background-color: #b80f22;
+        color: #fff;
+        font-size: 20px;
+        border-radius: 20px;
+    }
+    
+    a{
+    
+        text-decoration: none;
+        font-size: 20px;
+        line-height: 17px;
+        color: darkgray;
+       
+    }
+    
+}
