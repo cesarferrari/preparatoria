@@ -5,12 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/estilando.css">
+        <link rel="stylesheet" href="estilando.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
-    <body>
-        
     <body>
         
         <nav>
@@ -39,9 +37,9 @@
             <div class="lateral">
     <div class="option">
         <div class="logotipo">
-            <a href="acceso.php">
-                <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>principal</h4>
+            <a href="acceso_profesor.php">
+            <i class="fa-solid fa-house"></i>
+                <h4> principal</h4>
             </a>
         </div>
         <div class="logotipo">
@@ -94,7 +92,18 @@
             </div>
         </div>
         
-      
-  
-    </body>
+        <body>
+        <?php
+    
+    include('conexion.php');
+    //$base = new  PDO($hostname,$username,$password);
+    $base->setAttribute(PDO::ATTR_ERRMODE,PDO:: ERRMODE_EXCEPTION);
+    $base->exec("SET CHARACTER SET utf8");
+    
+    
+    
+    ?>
+    
+          
+        </body>
 </html>

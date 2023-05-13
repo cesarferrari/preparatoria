@@ -1,0 +1,21 @@
+.llave{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+.box{
+width: 350px;
+height: 500px;
+flex-basis: 100%;
+border: 2px solid white;
+text-align: center;
+font-style: italic;
+font-weight: bolder;
+color: azure;
+background-color: black;
+margin: auto;
+}
+body{
+    background-color: blue;
+}

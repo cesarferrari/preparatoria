@@ -5,7 +5,7 @@
        include("conexion.php");
       session_start();
       $_SESSION['matr']=$matricula;
-      
+    //without usefull     
 if(!empty($matricula)){
       
         try{
@@ -33,10 +33,7 @@ if(!empty($matricula)){
   foreach($usuarios as $user){
      ?>
      <tr>
-           <td><?php 
-         
-         
-                echo $user['asignatura']?></td>
+           <td><?php echo $user['asignatura']?></td>
 <td><?php echo $user["grupo"]?></td>
 <td><?php echo  $user["profesor"]?></td>
 <td><?php echo  $user["turno"]?></td>

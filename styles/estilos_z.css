@@ -1,0 +1,168 @@
+*{
+  box-sizing: border-box;
+  list-style: none;
+}
+nav{
+  
+  background-color: blue;
+  height: 80px;
+  width: 100%;
+  border: 2px solid aliceblue;
+  border-radius: 1px;
+  display: flex;
+ 
+}
+.logo{
+  height: 40px;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 10px;
+
+}
+nav ul li a{
+  font-size: x-large;
+  color: whitesmoke;
+  padding:7px 15px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.checkbtn{
+  font-size: 30px;
+  color: aliceblue;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+
+.menu_side{
+  width: 150px;
+  height: 100%;
+  position: fixed;
+  background: blue;
+  top: 0;
+  left: 0;
+  font-size :1rem;
+  color: aliceblue;
+  z-index: 300;
+}
+
+
+  @media(max-width:980px){
+  .enlace{
+  padding: left;
+  }
+  nav{
+    margin-top: 1em;
+      background-color: blue;
+      height: 60px;
+      width: 100%;
+      border: 2px solid aliceblue;
+      border-radius: 1px;
+    }
+    nav ul li{
+      display: inline-block;
+      line-height: 60px;
+      margin: 0 15px;
+    
+    }
+  nav ul li a{
+    font-size: 16px;
+  }
+  .logo{
+    height: 25px;
+  }
+  .imagen{
+    width: 350px;
+    height:270px;
+   
+    border-radius: 4px;
+  
+  }
+  .imagen1{
+    width: 350px;
+    height:270px;
+    
+    border-radius: 4px;
+  
+  }
+  }
+  
+  @media(max-width:768px){
+     .checkbtn{
+      display: block;
+     }
+     ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background:plum ;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+     }
+     nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  
+  }
+  li a:hover, li a:active{
+    background-color: none;
+    color: red;
+  }
+  #check:checked ~ ul{
+  left: 0;
+  }
+  .pie-pagina .grupo-1{
+    width: 90%;
+    
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    padding: 25px 15px;
+  }
+  .container{
+    width: 100%;
+  display: flex;
+  flex-direction: column;
+ 
+ background-color: white;
+  }
+  .imagen{
+    width: 100%;
+    height:auto;
+   
+    border-radius: 4px;
+   
+  
+  }
+  .imagen1{
+    width: 0;
+    height:auto;
+   
+    border-radius: 4px;
+   }
+   .pie-pagina .grupo-1 .box figure img{
+    width: 100px;
+  }
+  a{
+    font-size: smaller;
+    font-weight: bold;
+    font-weight: bolder;
+    
+  }
+    }
