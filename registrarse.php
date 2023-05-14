@@ -63,19 +63,18 @@ include('conexion.php');
               }else{
                try{
                 
-                $query[0]="select * from alumno where matricula={$matricula}";
-                $query[1]="select * from profesor where matricula={$matricula}";
-                $query[2]="select * from servicios_escolares where matricula={$matricula}";
+                $query[0]="select * from alumno where matricula='{$matricula}'";
+                $query[1]="select * from profesor where matricula='{$matricula}'";
+                $query[2]="select * from servicios_escolares where matricula='{$matricula}'";
                 for ($i=0; $i <3 ; $i++) { 
                   $consult=$base->prepare($query[$i]);
                   $consult->execute(array());
-                //  $matr=$consulta->fetchAll(PDO::FETCH_ASSOC);     
+                  $matr=$consult->fetch(PDO::FETCH_ASSOC);     
+                 
+                   }
                   
-                              
-        }
- 
      
-  if($consult){
+  if($matr>0){
     echo "<p>la matricula ya existe en la bd</p>";
     
   }else{
@@ -90,7 +89,7 @@ include('conexion.php');
     $consulta->bindParam(':password',$pass);
     $consulta->bindParam(':matricula',$matricula);
 
-    if($consulta->execute()){
+  if($consulta->execute()){
 echo "bienvenido ".$user." ".$apellidoP;
     }else{
       echo "error al guardar datos ";

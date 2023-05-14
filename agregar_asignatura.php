@@ -122,7 +122,7 @@
                   $asignatura=$_POST['asignatura'];
                   $profesor=$_POST['profesor'];
                   $nivel=$_POST['nivel_academico'];
-                 echo "<h2> $profesor </h2>";
+                 
                   if(empty($asignatura)){
                     echo "<h2> indique una asignatura a crear </h2>";
                   }else if(strcmp($profesor,"Elige una opcion")===0){
@@ -130,30 +130,36 @@
                   }else if(strcmp($nivel,"Elige una opcion")===0){
                     echo "<h2> elige un nivel academico </h2>";
                   }else
-                  $sql_asig="select * from asignatura where asignatura='{$asignatura}' and id_profesor={$profesor};";
+                
                   try{
+                    $sql_asig="select * from asignatura where asignatura='{$asignatura}' and id_profesor={$profesor};";
                  $select=$base->prepare($sql_asig);
                  $select->execute(array());
+                     $usuarios=$select->fetch(PDO::FETCH_ASSOC);
+                  
+
+
+                if($usuarios>0){
+                    echo "<h2> la asignatura y profesor ya se encuentar en la BD </h2>";
+                }else{
+                    $consult=$base->prepare("insert into asignatura(id_profesor,asignatura,nivel_educativo)values(:id_profesor,:asignatura,:nivel_educativo)");
+                    $consult->bindParam(':id_profesor',$profesor);
+                    $consult->bindParam(':asignatura',$asignatura);
+                   $consult->bindParam(':nivel_educativo',$nivel);
+
+                  if($consult->execute()){
+                    echo "<h2> datos ingresados correctamente </h2>";
+                  }else{
+                    echo "<h2> error al ingresar los datos  </h2>";
+                  }
+                }
+
+
+
                   }catch(Exception $e){
                     $e->getMessage();
                   }
-                 if($select){
                 
-                 echo "<p>  {$asignatura} profesor_id= {$profesor}</p>";
-                 }else{
-              /*  $sql_insert="insert into asignatura(asignatura,id_profesor,nivel_educativo)values(:asignatura,:id_profesor,:nivel_educativo)";
-                 $insert=$base->prepare($sql_insert);
-                 $insert->bindParam(':asignatura',$asignatura);
-                 $insert->bindParam(':id_profesor',$profesor);
-                 $insert->bindParam(':nivel_educativo',$nivel);
-                if( $insert->execute()){
-                    echo "<h2>los datos se guardaron correctamente  </h2>";
-                }else{
-                    echo "<h2>error al gaurdar </h2>";
-                }*/
-                 
-
-            }
                 }
                 ?>
              </div>
