@@ -11,8 +11,6 @@
     </head>
     <body>
         
-    <body>
-        
         <nav>
                 <input type="checkbox" id="check">
                 <label for="check" class="checkbtn">
@@ -39,33 +37,39 @@
             <div class="lateral">
     <div class="option">
         <div class="logotipo">
-            <a href="acceso.php">
-                <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>principal</h4>
+            <a href="acceso_SE.php">
+            <i class="fa-solid fa-house"></i>
+                <h4>pricipal</h4>
             </a>
         </div>
         <div class="logotipo">
             <a href="http://">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias alumnos</h4>
+                <h4>  incidencias profesores</h4>
+            </a>
+        </div>
+        <div class="logotipo">
+            <a href="alumnos.php">
+                <i class="fa-sharp fa-regular fa-calendar-days"></i>
+                <h4> alumnos</h4>
+            </a>
+        </div>
+        <div class="logotipo">
+            <a href="profesores.php">
+                <i class="fa-sharp fa-regular fa-calendar-days"></i>
+                <h4>profesores</h4>
             </a>
         </div>
         <div class="logotipo">
             <a href="http://">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias alumnos</h4>
+                <h4> noticias</h4>
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="inscripcion.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> incidencias alumnos</h4>
-            </a>
-        </div>
-        <div class="logotipo">
-            <a href="http://">
-                <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> incidencias alumnos</h4>
+                <h4> inscripciones</h4>
             </a>
         </div>
       
@@ -94,7 +98,18 @@
             </div>
         </div>
         
-      
-  
-    </body>
+        <body>
+        <?php
+    
+    include('conexion.php');
+    //$base = new  PDO($hostname,$username,$password);
+    $base->setAttribute(PDO::ATTR_ERRMODE,PDO:: ERRMODE_EXCEPTION);
+    $base->exec("SET CHARACTER SET utf8");
+    
+    
+    
+    ?>
+    
+          
+        </body>
 </html>
