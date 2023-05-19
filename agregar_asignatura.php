@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/estilando.css">
+        <link rel="stylesheet" href="styles/inserta_asignatura.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -22,7 +22,7 @@
                 </a>
                 <ul>
                
-               <li class="bienvenida">bienvenido alumno lenidas el fuerte </li>
+              
                
              
                
@@ -36,6 +36,7 @@
     
             <div class="lateral">
     <div class="option">
+    <h3 class="bienvenida">bienvenido alumno lenidas el fuerte </h3>
         <div class="logotipo">
             <a href="acceso_SE.php">
             <i class="fa-solid fa-house"></i>
@@ -55,7 +56,7 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="profesores.php">
+            <a href="profesor.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4>profesores</h4>
             </a>
@@ -67,7 +68,7 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="alumnos1.php">
+            <a href="inscripcion.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4> inscripciones</h4>
             </a>
@@ -81,11 +82,15 @@
             <form action="<?php  echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
             <div class="inputa">
             <h2>   <a href="inscripcion.php">Consultar asignatura</a></h2>
+            </div>
+            <div class="form_grupo">
+           
                 <label class="form_label" for="matricula">Matricula</label>
                 <input type="text" id="asigntura" name="asignatura" placeholder="ingrese asignatura" > 
                 </div>
-                 <label class="form_label" for="grupo">Profesor</label> 
-             <div class="inputa">
+                
+             <div class="form_grupo">
+             <label class="form_label" for="grupo">Profesor</label> 
              <?php 
                     include('conexion.php');
                     $sql="select  id_profesor,nombre,apellidoP,apellidoM from profesor;";
@@ -113,7 +118,9 @@
 
       </select>
              </div>
-                    <button  class="btn_form" type="submit" name="btn_envia">guardar</button>
+                    <div class="inputa">
+                    <button  class="button2" type="submit" name="btn_envia">guardar</button>
+                    </div>
                 </form>
 
                 <?php

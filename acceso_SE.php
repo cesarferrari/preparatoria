@@ -21,8 +21,7 @@
                     <img src="imagen/demo.png" alt="" class="logo">
                 </a>
                 <ul>
-               
-               <li class="bienvenida">bienvenido alumno lenidas el fuerte </li>
+           
                
              
                
@@ -55,7 +54,7 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="profesores.php">
+            <a href="profesor.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4>profesores</h4>
             </a>
@@ -98,17 +97,8 @@
             </div>
         </div>
         
-        <body>
-        <?php
-    
-    include('conexion.php');
-    //$base = new  PDO($hostname,$username,$password);
-    $base->setAttribute(PDO::ATTR_ERRMODE,PDO:: ERRMODE_EXCEPTION);
-    $base->exec("SET CHARACTER SET utf8");
-    
-    
-    
-    ?>
+       
+   
     
           
         </body>

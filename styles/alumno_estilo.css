@@ -3,6 +3,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  --navy-color:#00008B;
+  --smoke-color:whitesmoke;
+  
+  --black-color:black;
+  --blue-button:blue;
+text-decoration: none;
 }
 
 
@@ -14,7 +20,7 @@
     width: 100%;
   }
   .cabeza{
-    background-color: #00008B;
+    background-color: var(--navy-color,blue);
     height: 100%;
     width: 100%;
   }
@@ -22,26 +28,34 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    background-color:var(--navy-color,blue);
   }
+  .invisible{
+    font-size: .1rem;
+  
+
+   }
   .lateral{
 
 height:100vh;
   width: 15%;
 
   }
+ 
   .body{
-    background-color:whitesmoke;
+    background-color:var(--smoke-color,white);
       width: 85%;
        display: flex;
+       flex-direction: column;
        
       }
      
       .left{
-        height: 100vh;
         
-         width: 70%;
+        
+         width: 100%;
          background-color:white;
          padding: 2px 2px;
          border: solid 1px white;
@@ -52,23 +66,24 @@ height:100vh;
       }
     
       .right{
-        height: 100vh;
-        width: 30%;
+        
+        width: 100%;
       
         padding: 10px 2px;
         
         border-radius: 5%;
         margin-left: 10px;
-       
+       display: flex;
+       justify-content: flex-start;
         
       }
      
   .option{
-    background-color:#00008B;
+    background-color:var(--navy-color,blue);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding-top: 50px;
-    margin-left: 10px;
+  padding-left: 15px;
   }
   
   .option a{
@@ -95,9 +110,29 @@ height:100vh;
   display: flex;
   justify-content: flex-start;
   margin-right: 5px;
-  border-bottom: none;
+
 
  }
+
+ .logotipo_top a{
+
+  margin-right: 5px;
+ 
+  font-size: .9rem;
+  display:flex;
+  align-items: center;
+
+}
+.logotipo_top a[href="acceso_se.php"],a[href="noticias.php"]{
+  font-size: 1.2rem;
+  }
+.logotipo_top a[href] h4 {
+color: #00008B;
+}
+
+.logotipo_top h4{
+  color: white;
+}
 form h4{
   text-align: center;
   font-weight: bolder;
@@ -106,8 +141,10 @@ form h4{
 }
 .form_group{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+
+  align-items: flex-start;
+
   
 }
 .form_grupo{
@@ -115,11 +152,11 @@ form h4{
   
   align-items: center;
   justify-content: flex-end;
-  border: solid 1px black;
+  border: solid 1px whitesmoke;
   padding: 5px;
-  margin:10px 0px ;
+ 
   border-radius:4px ;
-  height: 30px;
+  height: 40px;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -129,7 +166,7 @@ form h4{
 }
 
 .form_grupo label{
-  font-size: .5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .button2{
@@ -144,18 +181,17 @@ form h4{
 
 }
 
-button:hover{
-  background-color: aqua;
-}
+
 .boton{
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
   background-color: blue;
   color: white;
-  height: 20px;
+
   border-radius: 4px;
   border: solid 1px white;
-  padding: 1px;
+ 
+ 
 }
 label{
   font-size: .9rem;
@@ -163,21 +199,25 @@ label{
   text-transform: uppercase;
 }
 select{
-  width: 80px;
+  width:350px;
   border: solid 1px blue;
   border-radius: 4px;
-  height: 20px;
+  height: 35px;
+  font-size: 1.0rem;
 }
-
+select option[value]{
+  font-size: 1.2rem;
+}
 label, input {
  
-  margin: 3px;
+  margin: 1px;
 }
-input{
+input[type="text"] {
   border: solid 1px blue;
   padding-left: 10px;
   margin: 9px;
-  height: 25px;
+  height: 35px;
+  width: 350px;
   border-radius: 4px;
 font-size: 1.1rem;
   
@@ -201,23 +241,28 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
     border-radius: 2px;
     border: solid 1px white;
   }
+  .elegir{
+    text-align: center;
+  }
   .button{
     background-color: blue;
-    height: 25px;
-    width: 80%;
+    height: 35px;
+   padding: 5px 160px;
     border-radius: 4px;
-    margin-right: 15px;
-    margin-left: 15px;
+  
     border: solid 1px white;
     color: white;
     
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  button:hover{
+    background-color: aqua;
+  }
  
   nav{
   
-    background-color: blue;
+    background-color: var(--navy-color,blue);
     height: 80px;
     width: 100%;
    
@@ -235,7 +280,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
   nav ul li a{
     font-size: x-large;
     color: whitesmoke;
-    padding:7px 15px;
+    padding:7px 7px;
     border-radius: 3px;
     text-transform: uppercase;
   }
@@ -245,7 +290,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
     float: right;
     line-height: 80px;
     margin-right: 40px;
-    cursor: pointer;
+   
     display: none;
   }
   #check{
@@ -277,20 +322,15 @@ border-collapse: collapse;
    
    
     padding: 5px;
-    border-bottom: solid 1px lightgray;
+    border-bottom: solid 1px var(--smoke-color,white);
   }
   th{
     background-color: black;
     color: white;
     border: solid 1px white;
   }
-  @media (max-width:1180px) {
-    .body{
-      background-color:whitesmoke;
-        width: 85%;
-         display: flex;
-         flex-direction: column;
-        }
+  @media (max-width:1200px) {
+  
         .left{
           height: 100vh;
           
@@ -315,18 +355,50 @@ border-collapse: collapse;
          
           
         }
+        th ,td{
+    
+          font-size: .8rem;
+         padding: 3px;
+         border-bottom: solid 1px var(--smoke-color,white);
+       }
+       th{
+         background-color: black;
+         color: white;
+         border: solid 1px white;
+       }
+       .logotipo_top a{
+
+        margin-right: 5px;
+       
+        font-size: .7rem;
+      
+      
+      }
+      .logotipo_top a[href="acceso_se.php"],a[href="noticias.php"]{
+        font-size: 1.0rem;
+        }
   }
   @media(max-width:980px){
     .enlace{
     padding: left;
     }
+    .logotipo_top a{
+
+      margin-right: 5px;
+     
+      font-size: .7rem;
     
+    
+    }
+    .logotipo_top a[href="acceso_se.php"],a[href="noticias.php"]{
+      font-size: 1.0rem;
+      }
     nav{
       margin-top: 1em;
-        background-color: blue;
-        height: 60px;
+        background-color: var(--navy-color,blue);
+        height: 80px;
         width: 100%;
-        border: 2px solid aliceblue;
+    justify-content: flex-end;
         border-radius: 1px;
       }
       nav ul{
@@ -363,11 +435,55 @@ border-collapse: collapse;
       font-weight:lighter;
       
     }
+    .logotipo_top a[href="acceso_se.php"],a[href="noticias.php"]{
+      font-size: .6rem;
+      }
+      table{
+        padding: 20px;
+      }
+      table tr{
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        border: solid 1 px gray;
+      }
+      table th{
+        display: none;
+      }
+      table td{
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem
+      }
+      table td[data-titulo]::before{
+        content:attr(data-titulo);
+        font-size: 1.2rem;
+        color: silver;
+        
+      }
+      table .boton{
+        margin-left: 3px;
+        margin-right: 3px;
+        background-color: blue;
+        color: white;
+       border-radius: 4px;
+        border: solid 1px white;
+        width: 100%;
+        padding: 1px 25px;
+        text-align: center;
+        text-transform: uppercase;
+       }
     }
     
     @media(max-width:768px){
        .checkbtn{
         display: block;
+       }
+       .lateral{
+        width: 0%;
+       }
+       .body{
+        width: 100%;
        }
        ul{
         position: fixed;
@@ -384,10 +500,7 @@ border-collapse: collapse;
         margin: 50px 0;
         line-height: 30px;
     }
-    nav ul li a{
-      font-size: 20px;
-    
-    }
+ 
     li a:hover, li a:active{
       background-color: none;
       color: red;
@@ -398,11 +511,27 @@ border-collapse: collapse;
     #check:checked ~ ul{
     left: 0;
     }
-   
+    #check:checked ~ .option a{
+      left: 0;
+      }
+    .form_grupo{
+      display: flex;
+      
+      align-items: center;
+      justify-content: flex-end;
+      border: solid 1px white;
+      padding: 5px;
+      margin:10px 0px ;
+      border-radius:4px ;
+      height: 40px;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .container{
       width: 100%;
     display: flex;
-    flex-direction: column;
+   
    
    background-color: white;
     }
@@ -414,6 +543,10 @@ border-collapse: collapse;
      
     
     }
+    .logotipo_top a,h3{
+      font-size: 1.5rem;
+      }
+      
     .imagen1{
       width: 0;
       height:auto;
@@ -432,4 +565,5 @@ border-collapse: collapse;
       font-weight: bold;
       font-weight: bolder;
     }
+   
       }

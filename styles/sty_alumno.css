@@ -6,31 +6,15 @@
 }
 
 
-  .header{
-    grid-column: 1;
-    grid-row: 1;
-    background-color: bisque;
-    height: 100px;
-    width: 100%;
-  }
-  .cabeza{
-    background-color: #00008B;
-    height: 100%;
-    width: 100%;
-  }
   .container {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    background-color:#00008B;
   }
-  .lateral{
-
-height:100vh;
-  width: 15%;
-
-  }
+ 
   .body{
     background-color:whitesmoke;
       width: 85%;
@@ -43,7 +27,7 @@ height:100vh;
         
          width: 70%;
          background-color:white;
-         padding: 2px 2px;
+         padding: 3px 3px;
          border: solid 1px white;
          margin: 10px 10px;
          border-radius: 5%;
@@ -63,19 +47,31 @@ height:100vh;
         
       }
      
+     .lateral{
+
+      height:100vh;
+        width: 15%;
+        background-color:#00008B;
+        }
   .option{
     background-color:#00008B;
     width: 100%;
     height: 100vh;
     padding-top: 50px;
-    margin-left: 10px;
+padding-left: 20px;
   }
   
   .option a{
-    color: white;
+    color: whitesmoke;
     font-size: 1.2rem;
     padding-top: 50px;
+
   }
+  .option a:hover{
+    color:#800080;
+    opacity: 50%;
+  }
+
   .option h3{
     color: white;
     font-size: 1.2rem;
@@ -196,6 +192,9 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
     padding :20px 50px;
     left: 1%;
   }
+  .elegir{
+    text-align: center;
+  }
   .logo{
     height: 40px;
     border-radius: 2px;
@@ -217,7 +216,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
  
   nav{
   
-    background-color: blue;
+    background-color: #00008B;
     height: 80px;
     width: 100%;
    
@@ -265,32 +264,96 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
     border-radius: 4px;
   
   }
+ 
   table{
-    width:100%;
+    
 border-collapse: collapse;
     
   }
   tr:nth-child(even){
     background-color: #eee;
   }
-  th ,td{
-   
-   
-    padding: 5px;
+  td{
+  
+
+  
     border-bottom: solid 1px lightgray;
+
   }
+  
   th{
     background-color: black;
     color: white;
     border: solid 1px white;
+ 
+    text-transform: uppercase;
   }
-  @media (max-width:1180px) {
+  @media (max-width:1500px){
     .body{
       background-color:whitesmoke;
         width: 85%;
          display: flex;
          flex-direction: column;
         }
+    
+        .left{
+          height: 100vh;
+          
+           width: 100%;
+           background-color:white;
+           padding: 2px 2px;
+           border: solid 1px white;
+           margin: 10px 10px;
+           border-radius: 5%;
+           margin-right: 10px;
+           display: flex;
+           justify-content: left;
+           flex-direction: column;
+        }
+      
+        .right{
+          height: 100vh;
+          width: 100%;
+        
+          padding: 10px 2px;
+          
+          border-radius: 5%;
+          margin-left: 10px;
+         }
+         .lateral{
+
+          height:100vh;
+            width: 15%;
+          
+            }
+            .option{
+              background-color:#00008B;
+              width: 100%;
+              height: 100vh;
+              padding-top: 50px;
+          padding-left: 10px;
+            }
+            
+            .option a{
+              color: whitesmoke;
+              font-size: .8rem;
+              padding-top: 30px;
+          
+            }
+            .option h3{
+              color: white;
+              font-size: .8rem;
+              padding-top: 30px;
+            }
+          
+        
+             
+        
+       
+       
+  }
+  @media (max-width:1180px) {
+   
         .left{
           height: 100vh;
           
@@ -312,21 +375,43 @@ border-collapse: collapse;
           
           border-radius: 5%;
           margin-left: 10px;
-         
-          
-        }
+         }
+     
+      
+    
   }
   @media(max-width:980px){
     .enlace{
     padding: left;
     }
+    .left{
+      height: 100vh;
+      
+       width: 100%;
+       background-color:white;
+       padding: 2px 2px;
+       border: solid 1px white;
+       margin: 10px 10px;
+       border-radius: 5%;
+       margin-right: 10px;
+       
+    }
+  
+    .right{
+      height: 100vh;
+      width: 100%;
     
+      padding: 10px 2px;
+      
+      border-radius: 5%;
+      margin-left: 10px;
+     }
     nav{
       margin-top: 1em;
-        background-color: blue;
+        background-color:#00008B;
         height: 60px;
         width: 100%;
-        border: 2px solid aliceblue;
+     
         border-radius: 1px;
       }
       nav ul{
@@ -358,17 +443,30 @@ border-collapse: collapse;
       border-radius: 4px;
     
     }
-    .option a{
-      font-size: smaller;
-      font-weight:lighter;
-      
+    .option{
+      background-color: #00008B;
+      width: 10vh;
     }
+    
+    .option a{
+      font-size: .6rem;
+      font-weight:lighter;
+      padding-right: 5px;
+    }
+    .option h3{
+      margin-top: 10px;
+      font-size: .6rem;
+      font-weight: lighter;
+      padding-right: 5px;
+    }
+   
     }
     
     @media(max-width:768px){
        .checkbtn{
         display: block;
        }
+    
        ul{
         position: fixed;
         width: 100%;
@@ -393,19 +491,34 @@ border-collapse: collapse;
       color: red;
     }
     select option{
-      font-size: .8rem;
+      font-size: .6rem;
     }
     #check:checked ~ ul{
     left: 0;
     }
-   
-    .container{
-      width: 100%;
-    display: flex;
-    flex-direction: column;
-   
-   background-color: white;
+    .form_grupo{
+      display: flex;
+      
+      align-items: center;
+      justify-content: flex-end;
+      border: solid 1px black;
+      padding: 4px;
+      margin:8px 0px ;
+      border-radius:4px ;
+      height: 25px;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
     }
+    .form_grupo button{
+      height: 1.1rem;
+    }
+    
+    .form_grupo label{
+      font-size: .4rem;
+      font-weight: bold;
+    }
+ 
     .imagen{
       width: 100%;
       height:auto;
@@ -420,16 +533,16 @@ border-collapse: collapse;
      
       border-radius: 4px;
      }
+ 
     
-    a{
-      font-size: smaller;
-      font-weight: bold;
-      font-weight: bolder;
-      
+     .option a{
+      font-size: .5rem;
+      font-weight:lighter;
+      padding-right: 4px;
     }
-    .option a{
-      font-size: smaller;
-      font-weight: bold;
-      font-weight: bolder;
+    .option h3{
+      color: white;
+      font-size: .6rem;
+      padding-top: 50px;
     }
       }

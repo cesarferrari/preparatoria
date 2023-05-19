@@ -3,6 +3,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-decoration: none;
 }
 
 
@@ -20,10 +21,10 @@
   }
   .container {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    height: 100vh;
+    
+    height: 100%;
     width: 100%;
+    background-color: #00008B;
   }
   .lateral{
 
@@ -34,53 +35,40 @@ height:100vh;
   .body{
     background-color:whitesmoke;
       width: 85%;
-       display: flex;
+     height: 100vh;
        
       }
      
-      .left{
-        height: 100vh;
-        
-         width: 70%;
-         background-color:white;
-         padding: 2px 2px;
-         border: solid 1px white;
-         margin: 10px 10px;
-         border-radius: 5%;
-         margin-right: 10px;
-         
-      }
-    
-      .right{
-        height: 100vh;
-        width: 30%;
+   
+    .encabezado{
+      display: flex;
+      justify-content: space-around;
+    }
       
-        padding: 10px 2px;
-        
-        border-radius: 5%;
-        margin-left: 10px;
-       
-        
-      }
      
   .option{
     background-color:#00008B;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding-top: 50px;
-    margin-left: 10px;
+  
   }
   
   .option a{
     color: white;
     font-size: 1.2rem;
     padding-top: 50px;
+    padding-left:10px;
+    
   }
   .option h3{
     color: white;
     font-size: 1.2rem;
-    padding-top: 50px;
+    padding-top: 5px;
+    padding-left:10px;
+    margin-bottom:50px ;
   }
+
   .name{
     color: white;
     margin-left: 5px;
@@ -98,6 +86,40 @@ height:100vh;
   border-bottom: none;
 
  }
+ .inputa{
+  display: flex;
+  flex-direction:column ;
+  justify-content: space-between;
+  align-content: space-between;
+
+}
+
+h2{
+  text-align: center;
+}
+
+form{
+  height: auto;
+  width: 80%;
+
+}
+form input{
+  border: solid 1px lightslategray;
+  border-radius: 4px;
+  width: 90%;
+  height: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 3px;
+}
+.btn_form{
+background-color: blue;
+color: white;
+border-radius: 4px;
+width: 90%;
+height: 25px;
+}
 form h4{
   text-align: center;
   font-weight: bolder;
@@ -129,7 +151,7 @@ form h4{
 }
 
 .form_grupo label{
-  font-size: .5rem;
+  font-size: .8rem;
   font-weight: bold;
 }
 .button2{
@@ -167,6 +189,9 @@ select{
   border: solid 1px blue;
   border-radius: 4px;
   height: 20px;
+}
+p{
+  text-align: centers;
 }
 
 label, input {
@@ -217,7 +242,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
  
   nav{
   
-    background-color: blue;
+    background-color: #00008B;
     height: 80px;
     width: 100%;
    
@@ -239,6 +264,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
     border-radius: 3px;
     text-transform: uppercase;
   }
+  
   .checkbtn{
     font-size: 30px;
     color: aliceblue;
@@ -275,46 +301,34 @@ border-collapse: collapse;
   }
   th ,td{
    
-   
+    font-size: 1.2rem;
+   font-weight: bold;
     padding: 5px;
     border-bottom: solid 1px lightgray;
+    text-align: center;
+
   }
+ 
+
   th{
     background-color: black;
     color: white;
     border: solid 1px white;
   }
-  @media (max-width:1180px) {
-    .body{
-      background-color:whitesmoke;
-        width: 85%;
-         display: flex;
-         flex-direction: column;
-        }
-        .left{
-          height: 100vh;
-          
-           width: 100%;
-           background-color:white;
-           padding: 2px 2px;
-           border: solid 1px white;
-           margin: 10px 10px;
-           border-radius: 5%;
-           margin-right: 10px;
-           
-        }
-      
-        .right{
-          height: 100vh;
-          width: 100%;
-        
-          padding: 10px 2px;
-          
-          border-radius: 5%;
-          margin-left: 10px;
-         
-          
-        }
+  @media (max-width:1200px) {
+ 
+       
+        th ,td{
+    
+          font-size: .8rem;
+         padding: 3px;
+         border-bottom: solid 1px lightgray;
+       }
+       th{
+         background-color: black;
+         color: white;
+         border: solid 1px white;
+       }
   }
   @media(max-width:980px){
     .enlace{
@@ -323,10 +337,10 @@ border-collapse: collapse;
     
     nav{
       margin-top: 1em;
-        background-color: blue;
+        background-color: #00008B;
         height: 60px;
         width: 100%;
-        border: 2px solid aliceblue;
+       
         border-radius: 1px;
       }
       nav ul{
@@ -359,10 +373,15 @@ border-collapse: collapse;
     
     }
     .option a{
-      font-size: smaller;
+      font-size: .8rem;
       font-weight:lighter;
       
     }
+    .form_grupo label{
+      font-size: .6rem;
+      font-weight: bold;
+    }
+   
     }
     
     @media(max-width:768px){
@@ -402,7 +421,7 @@ border-collapse: collapse;
     .container{
       width: 100%;
     display: flex;
-    flex-direction: column;
+   
    
    background-color: white;
     }
@@ -413,6 +432,12 @@ border-collapse: collapse;
       border-radius: 4px;
      
     
+    }
+    .encabezado{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
     .imagen1{
       width: 0;
@@ -430,6 +455,11 @@ border-collapse: collapse;
     .option a{
       font-size: smaller;
       font-weight: bold;
-      font-weight: bolder;
+    
+    }
+    .option h3{
+      font-size: smaller;
+      font-weight: bold;
+      
     }
       }

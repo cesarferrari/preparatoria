@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/style_login.css">
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 <body>
    
-<?php
-if(isset($_GET['error'])){?>
-                <p class="error"><?php echo $_GET['error'];?></p>
-                <?php } ?>
+
 
     <div id="login">
 <div class="llave"> 
@@ -24,6 +21,10 @@ if(isset($_GET['error'])){?>
             <label for="pass">contraseña</label>
             <input type="password" id="pass" name="pass" placeholder="ingrese su contraseña"> <br><br>
             <input type="submit"><br><br>
+            <?php
+if(isset($_GET['error'])){?>
+                <p class="error"><?php echo $_GET['error'];?></p>
+                <?php } ?>
             </form>
   <a href="registrarse.php">
       <button>nuevo usuario</button></a>

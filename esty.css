@@ -68,13 +68,7 @@ height:100vh;
           flex-direction:column ;
       
       }
-      .btn_form{
-          background-color: blue;
-          color: white;
-          border-radius: 4px;
-          width: 90%;
-          height: 25px;
-      }
+     
       h2{
           text-align: center;
       }
@@ -94,6 +88,13 @@ height:100vh;
           margin-top: 5px;
           padding: 10px;
       }
+      .btn_form{
+        background-color: blue;
+        color: white;
+        border-radius: 4px;
+        width: 90%;
+        height: 25px;
+    }
       p{
         text-align: center;
         font-size: larger;

@@ -3,6 +3,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-decoration: none;
+   
+    --azul-navy:#00008B;
 }
 
 
@@ -14,16 +17,16 @@
     width: 100%;
   }
   .cabeza{
-    background-color: #00008B;
+    background-color:var(--azul-navy,blue);
     height: 100%;
     width: 100%;
   }
   .container {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    height: 100vh;
+    
+    height: 100%;
     width: 100%;
+    background-color:var(--azul-navy,blue);
   }
   .lateral{
 
@@ -34,52 +37,52 @@ height:100vh;
   .body{
     background-color:whitesmoke;
       width: 85%;
-       display: flex;
-       
+     height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
       }
      
-      .left{
-        height: 100vh;
-        
-         width: 70%;
-         background-color:white;
-         padding: 2px 2px;
-         border: solid 1px white;
-         margin: 10px 10px;
-         border-radius: 5%;
-         margin-right: 10px;
-         
-      }
-    
-      .right{
-        height: 100vh;
-        width: 30%;
+   .inputa
+   {
+ 
+   display: flex;
+   justify-content: space-evenly;
+   }
+    .encabezado{
+      display: flex;
+      justify-content: space-around;
+    }
       
-        padding: 10px 2px;
-        
-        border-radius: 5%;
-        margin-left: 10px;
-       
-        
-      }
      
   .option{
-    background-color:#00008B;
+    background-color:var(--azul-navy,blue);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding-top: 50px;
-    margin-left: 10px;
+  
   }
   
   .option a{
     color: white;
     font-size: 1.2rem;
     padding-top: 50px;
+    padding-left:10px;
+    
   }
   .option h3{
     color: white;
     font-size: 1.2rem;
-    padding-top: 50px;
+    padding-top: 5px;
+    padding-left:10px;
+    margin-bottom:50px ;
+  }
+   a:hover{
+background-color: aqua;
+opacity: 70%;
+color: black;
+border-radius: 10px;
   }
   .name{
     color: white;
@@ -97,6 +100,11 @@ height:100vh;
   margin-right: 5px;
   border-bottom: none;
 
+ }
+ form{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
  }
 form h4{
   text-align: center;
@@ -119,7 +127,7 @@ form h4{
   padding: 5px;
   margin:10px 0px ;
   border-radius:4px ;
-  height: 30px;
+  height: 40px;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -129,12 +137,12 @@ form h4{
 }
 
 .form_grupo label{
-  font-size: .5rem;
+  font-size: .9rem;
   font-weight: bold;
 }
 .button2{
  
-  width: 100%;
+  width: 70%;
   height: auto;
   background-color: blue;
   border-radius: 4px;
@@ -167,6 +175,9 @@ select{
   border: solid 1px blue;
   border-radius: 4px;
   height: 20px;
+}
+p{
+  text-align: centers;
 }
 
 label, input {
@@ -217,7 +228,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
  
   nav{
   
-    background-color: blue;
+    background-color:var(--azul-navy,blue);
     height: 80px;
     width: 100%;
    
@@ -239,6 +250,7 @@ box-shadow: 0 5px 10px -5px rgb(0 0 0/30%);
     border-radius: 3px;
     text-transform: uppercase;
   }
+  
   .checkbtn{
     font-size: 30px;
     color: aliceblue;
@@ -275,46 +287,34 @@ border-collapse: collapse;
   }
   th ,td{
    
-   
+    font-size: 1.2rem;
+   font-weight: bold;
     padding: 5px;
     border-bottom: solid 1px lightgray;
+    text-align: center;
+
   }
+ 
+
   th{
     background-color: black;
     color: white;
     border: solid 1px white;
   }
-  @media (max-width:1180px) {
-    .body{
-      background-color:whitesmoke;
-        width: 85%;
-         display: flex;
-         flex-direction: column;
-        }
-        .left{
-          height: 100vh;
-          
-           width: 100%;
-           background-color:white;
-           padding: 2px 2px;
-           border: solid 1px white;
-           margin: 10px 10px;
-           border-radius: 5%;
-           margin-right: 10px;
-           
-        }
-      
-        .right{
-          height: 100vh;
-          width: 100%;
-        
-          padding: 10px 2px;
-          
-          border-radius: 5%;
-          margin-left: 10px;
-         
-          
-        }
+  @media (max-width:1200px) {
+ 
+       
+        th ,td{
+    
+          font-size: .8rem;
+         padding: 3px;
+         border-bottom: solid 1px lightgray;
+       }
+       th{
+         background-color: black;
+         color: white;
+         border: solid 1px white;
+       }
   }
   @media(max-width:980px){
     .enlace{
@@ -323,10 +323,10 @@ border-collapse: collapse;
     
     nav{
       margin-top: 1em;
-        background-color: blue;
+      background-color:var(--azul-navy,blue);
         height: 60px;
         width: 100%;
-        border: 2px solid aliceblue;
+       
         border-radius: 1px;
       }
       nav ul{
@@ -359,9 +359,20 @@ border-collapse: collapse;
     
     }
     .option a{
-      font-size: smaller;
+      font-size: .8rem;
       font-weight:lighter;
       
+    }
+    .option h3{
+      color: white;
+      font-size: .8rem;
+      padding-top: 5px;
+      padding-left:10px;
+      margin-bottom:50px ;
+    }
+    .form_grupo label{
+      font-size: .6rem;
+      font-weight: bold;
     }
     }
     
@@ -402,7 +413,7 @@ border-collapse: collapse;
     .container{
       width: 100%;
     display: flex;
-    flex-direction: column;
+   
    
    background-color: white;
     }
@@ -413,6 +424,12 @@ border-collapse: collapse;
       border-radius: 4px;
      
     
+    }
+    .encabezado{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
     .imagen1{
       width: 0;
@@ -426,6 +443,19 @@ border-collapse: collapse;
       font-weight: bold;
       font-weight: bolder;
       
+    }
+    .form_grupo{
+      display: flex;
+       align-items: center;
+      justify-content: flex-end;
+      border: solid 1px white;
+      padding: 5px;
+      margin:10px 0px ;
+      border-radius:4px ;
+      height: 30px;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
     }
     .option a{
       font-size: smaller;

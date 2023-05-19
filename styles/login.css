@@ -80,10 +80,9 @@ a{
 .error{
 
     background-color: aqua;
-    color:black;
+    color:white;
     padding: 10px;
-    font-size: 1.2rem;
-    width: 55%;
+    width: 35%;
     border-radius: 5px;
 }
 body{

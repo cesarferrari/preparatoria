@@ -57,7 +57,7 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="profesor.php">
+            <a href="profesores.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4>profesores</h4>
             </a>
@@ -83,30 +83,28 @@
             <div class="filt">
                 <div class="encabezado">
                 <h2>consultas de alumnos elige una opcion   </h2>
-                <h3> <a href="agregar_asignatura.php">Agregar asignatura</a></h3>
+                <h3> <a href="agregar_asignatura.php">Agregar Profesor</a></h3>
                 </div>
             
                 <form action="<?php  echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="form_grupo" method="GET">
                  
-                    <label class="form_label" for="grupo">asignatura</label> 
+                    <label class="form_label" for="grupo">Todos los Profesores</label> 
                 
                     <?php 
                     include('conexion.php');
-                    $sql="select asig.asignatura,prof.nombre,prof.apellidoP,prof.apellidoM from asignatura  asig inner join profesor prof on asig.id_profesor=prof.id_profesor;";
+                    $sql="select *from profesor;";
              
                     $query=$base->prepare($sql);
                      $query->execute();
                      $results=$query->fetchAll(PDO::FETCH_ASSOC);
                      ?>
-                     <select name="asignatura" id="asignatura">
-                     <option value="elige unan opcion">elige una opcion</option>
+                   
                    <?php  foreach ($results as $res ){?>
                     
-                        <option value="<?php echo $res['asignatura'];?>">
-                        <?php echo $res['asignatura']." ".$res['nombre']." ".$res['apellidoP']." ".$res['apellidoM'];?></option>
+                    
                        <?php }
 ?>
-      </select>
+      
 <button class="boton"  name="btn_asignatura" id="grupo">buscar</button>
                  </form>
             
@@ -116,7 +114,6 @@
                   <input type="text" name="matricula">
                         <button class="boton"  name="btn_matricula" id="btn_matricula">buscar</button>
             </form>
-            <div class="tab">
             <table>
             <tr>
                 <th colspan="2">Nombre</th>
@@ -125,6 +122,8 @@
                 <th>Estatus</th>
                 <th>Editar</th>
             </tr>
+            <div class="tab">
+          
             <?php
                 
                  $sql_var="";
@@ -134,9 +133,7 @@
                    
                    echo "<p>{$asignatura}</p>";
                 
-                   $sql_grupo="select al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura
-                    insc inner join alumno al on al.id=insc.id_alumno inner join asignatura asig on
-                     asig.id_asignatura=insc.id_asignatura where asig.asignatura='{$asignatura}';";
+                   $sql_grupo="";
                    try{
                     $consult=$base->prepare($sql_grupo);
                     $consult->execute(array());
@@ -148,7 +145,7 @@
                             <td colspan="2"><?php   echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'] ?></td>
                           
                             <td><?php   echo $user['asignatura'] ?></td>
-                            <td><?php   echo $user['estatus'] ?></td>
+                           
                              <td><a class="boton" href="alumnos1.php?txtID1=<?php $user['matricula'];?>" >editar</a></td>
                         </tr>
                         <?php
@@ -161,9 +158,7 @@
               
                  if(isset($_GET['btn_matricula'])){
                     $matricula=$_GET['matricula'];
-                    $sql_asignatura=" select al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura insc
-                    inner join alumno al on al.id=insc.id_alumno inner join asignatura asig on asig.id_asignatura=insc.id_asignatura 
-                    where al.matricula={$matricula};";
+                    $sql_asignatura=" select nombre,apellidoP,apellidoM,email,matricula from profesor where matricula  ={$matricula};";
                     echo "<p>{$matricula}</p>";
                  
                 
