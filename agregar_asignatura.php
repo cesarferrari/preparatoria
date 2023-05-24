@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/inserta_asignatura.css">
+        <link rel="stylesheet" href="styles/ins_profesor.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -36,7 +36,7 @@
     
             <div class="lateral">
     <div class="option">
-    <h3 class="bienvenida">bienvenido alumno lenidas el fuerte </h3>
+   
         <div class="logotipo">
             <a href="acceso_SE.php">
             <i class="fa-solid fa-house"></i>
@@ -79,13 +79,14 @@
     
             <div class="body">
         
+            <div class="formulario">
             <form action="<?php  echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
             <div class="inputa">
             <h2>   <a href="inscripcion.php">Consultar asignatura</a></h2>
             </div>
             <div class="form_grupo">
            
-                <label class="form_label" for="matricula">Matricula</label>
+                <label class="form_label" for="matricula">Asignatura</label>
                 <input type="text" id="asigntura" name="asignatura" placeholder="ingrese asignatura" > 
                 </div>
                 
@@ -109,7 +110,7 @@
                  
       </select>
       <label class="form_label" for="nivel">Nivel Academico</label> 
-      <select name="nivel_academico" id="">
+      <select name="nivel_academico" id="nivel_academico">
 <option value="Elige una opcion">Elige una Opcion</option>
 <option value="Preescolar">Preescolar</option>
 <option value="Primaria">Primaria</option>
@@ -122,6 +123,7 @@
                     <button  class="button2" type="submit" name="btn_envia">guardar</button>
                     </div>
                 </form>
+            </div>
 
                 <?php
                 include('conexion.php');
@@ -131,11 +133,17 @@
                   $nivel=$_POST['nivel_academico'];
                  
                   if(empty($asignatura)){
-                    echo "<h2> indique una asignatura a crear </h2>";
+                  ?>
+                    <script>alert("ingrese una asignatura")</script>
+                  <?php
                   }else if(strcmp($profesor,"Elige una opcion")===0){
-                    echo "<h2> elige un profesor </h2>";
+                    ?>
+                    <script>alert("Elige un Profesor")</script>
+                  <?php
                   }else if(strcmp($nivel,"Elige una opcion")===0){
-                    echo "<h2> elige un nivel academico </h2>";
+                    ?>
+                    <script>alert("Elige un Nivel Academico")</script>
+                  <?php
                   }else
                 
                   try{
@@ -147,7 +155,9 @@
 
 
                 if($usuarios>0){
-                    echo "<h2> la asignatura y profesor ya se encuentar en la BD </h2>";
+                    ?>
+                    <script>alert("la asignatura y profesor ya se encuentran en la BD")</script>
+                  <?php
                 }else{
                     $consult=$base->prepare("insert into asignatura(id_profesor,asignatura,nivel_educativo)values(:id_profesor,:asignatura,:nivel_educativo)");
                     $consult->bindParam(':id_profesor',$profesor);
@@ -155,9 +165,13 @@
                    $consult->bindParam(':nivel_educativo',$nivel);
 
                   if($consult->execute()){
-                    echo "<h2> datos ingresados correctamente </h2>";
+                    ?>
+                    <script>alert("datos ingresados correctamente")</script>
+                  <?php
                   }else{
-                    echo "<h2> error al ingresar los datos  </h2>";
+                    ?>
+                    <script>alert("error al ingresar datos ")</script>
+                  <?php
                   }
                 }
 
@@ -177,6 +191,6 @@
         
     
     
-          
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </body>
 </html>

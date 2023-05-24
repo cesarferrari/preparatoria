@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/estilando.css">
+        <link rel="stylesheet" href="styles/style_asignatura.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -42,9 +42,9 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="incidencia.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias profesores</h4>
+                <h4>  incidencias </h4>
             </a>
         </div>
         <div class="logotipo">
@@ -60,9 +60,9 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="colegiatura.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> noticias</h4>
+                <h4> Colegiaturas</h4>
             </a>
         </div>
         <div class="logotipo">

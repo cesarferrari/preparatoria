@@ -69,7 +69,7 @@ height:100vh;
         
         width: 100%;
       
-        padding: 10px 2px;
+        padding: 10px 20px;
         
         border-radius: 5%;
         margin-left: 10px;
@@ -394,12 +394,14 @@ border-collapse: collapse;
       font-size: 1.0rem;
       }
     nav{
-      margin-top: 1em;
+    
         background-color: var(--navy-color,blue);
         height: 80px;
         width: 100%;
     justify-content: flex-end;
         border-radius: 1px;
+        position: fixed;
+        
       }
       nav ul{
         float: right;
@@ -438,6 +440,12 @@ border-collapse: collapse;
     .logotipo_top a[href="acceso_se.php"],a[href="noticias.php"]{
       font-size: .6rem;
       }
+      .left{
+        height:500px;
+        overflow-y: auto;
+        margin-top: 100px;
+      }
+     
       table{
         padding: 20px;
       }

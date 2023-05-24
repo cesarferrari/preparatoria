@@ -37,7 +37,7 @@
             <div class="lateral">
            
     <div class="option">
-    <h3 class="bienvenida">bienvenido alumno lenidas el fuerte </h3>
+   
         <div class="logotipo">
             <a href="acceso_SE.php">
             <i class="fa-solid fa-house"></i>
@@ -45,9 +45,9 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+        <a href="incidencia.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias profesores</h4>
+                <h4>  incidencias </h4>
             </a>
         </div>
         <div class="logotipo">
@@ -65,7 +65,7 @@
         <div class="logotipo">
             <a href="http://">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> noticias</h4>
+                <h4> Colegiaturas</h4>
             </a>
         </div>
         <div class="logotipo">

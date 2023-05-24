@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="styles/style_alumno.css">
+        <title>Alumno</title>
+        <link rel="stylesheet" href="styles/alumno_estilo.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -30,36 +30,40 @@
     <div class="lateral">
       
     <div class="option">
-    <h3 class="name">eleonora understantable</h3>
         <div class="logotipo">
             <a href="acceso_SE.php">
             <i class="fa-solid fa-house"></i>
-                <h4> principal</h4>
+                <h4>pricipal</h4>
+            </a>
+        </div>
+        <div class="logotipo">
+            <a href="incidencia.php">
+                <i class="fa-sharp fa-regular fa-calendar-days"></i>
+                <h4>  incidencias </h4>
+            </a>
+        </div>
+        <div class="logotipo">
+            <a href="alumnos.php">
+                <i class="fa-sharp fa-regular fa-calendar-days"></i>
+                <h4> alumnos</h4>
+            </a>
+        </div>
+        <div class="logotipo">
+            <a href="profesor.php">
+                <i class="fa-sharp fa-regular fa-calendar-days"></i>
+                <h4>profesores</h4>
             </a>
         </div>
         <div class="logotipo">
             <a href="http://">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias alumnos</h4>
+                <h4> Colegiaturas</h4>
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="inscripcion.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias alumnos</h4>
-            </a>
-        </div>
-        <div class="logotipo">
-            <a href="http://">
-                <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> incidencias alumnos</h4>
-            </a>
-        </div>
-        <div class="logotipo">
-            <a href="http://">
-
-                <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> incidencias alumnos</h4>
+                <h4> inscripciones</h4>
             </a>
         </div>
       
@@ -72,9 +76,9 @@
             <div class="filt">
                 <h2>consultas de alumnos elige una opcion</h2>
                 <form action="<?php  echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="form_grupo" method="GET">
-                    <label class="form_label" for="nivel">nivel educativo</label> 
+                   
                     <select name="nivel_1" id="nivel_1">
-                    <option value="selecciona">selecciona grado academico</option>
+                    <option value="selecciona">selecciona un nivel</option>
                     <option value="preescolar">preescolar</option>
                     <option value="primaria">primaria</option>
                     <option value="secundaria">secundaria</option>
@@ -111,15 +115,14 @@
                     <button class="boton" name="btn_user" id="btn_user">buscar</button>
             </form>
                 
-               
+            
             
                 
                 <table class="tabla" id="data-table">
                     <tr>
                         <th>matricula</th>
-                        <th>nombre</th>
-                        <th>paterno</th>
-                        <th> materno</th>
+                        <th colspan="2">nombre</th>
+                       
                         <th>email</th>
                         <th>turno</th>
                         <th>usuario</th>
@@ -130,7 +133,7 @@
                     </tr>
                  <?php
                  
-                 $sql_usuarios="select* from alumno where grupo='' or nivel_educativo='' or tipo_usuario='' or turno='' or tipo_usuario is null or grupo is null or nivel_educativo is null or turno is null";
+              require_once("conexion.php");
                 
                  if(isset($_GET['btn_grupo'])){
                    $nivel1=$_GET['nivel_1'];
@@ -138,6 +141,7 @@
                    echo "<p>{$nivel1}{$grupo}</p>";
                 
                    $sql_grupo="select* from alumno where nivel_educativo='{$nivel1}' and grupo='{$grupo}'";
+                  
                    try{
                     $consult=$base->prepare($sql_grupo);
                     $consult->execute(array());
@@ -145,16 +149,15 @@
                     foreach ($usuarios as $user) {
                         ?>
                         <tr>
-                        <td><?php   echo $user['matricula'] ?></td>
-                            <td><?php   echo $user['nombre'] ?></td>
-                            <td><?php   echo $user['apellidoP'] ?></td>
-                            <td><?php   echo $user['apellidoM'] ?></td>
-                            <td><?php   echo $user['email'] ?></td>
-                            <td><?php   echo $user['turno'] ?></td>
+                        <td data-titulo="matricula"><?php   echo $user['matricula'] ?></td>
+                            <td data-titulo="nombre" colspan="2"><?php   echo $user['nombre'] ?></td>
+                     
+                            <td data-titulo="email"><?php   echo $user['email'] ?></td>
+                            <td data-titulo="turno"><?php   echo $user['turno'] ?></td>
                             
-                            <td><?php   echo $user['tipo_usuario'] ?></td>
-                            <td><?php   echo $user['nivel_educativo'] ?></td>
-                            <td><?php   echo $user['grupo'] ?></td>
+                            <td data-titulo="tipo usuario"><?php   echo $user['tipo_usuario'] ?></td>
+                            <td data-titulo="nivel educativo"><?php   echo $user['nivel_educativo'] ?></td>
+                            <td data-titulo="grupo"><?php   echo $user['grupo'] ?></td>
      <td><a class="boton" href="alumnos1.php?txtID=<?php $user['matricula']?>" >editar</a></td>
                         </tr>
                         <?php
@@ -172,6 +175,7 @@
                  }
                  if(isset($_GET['btn_user'])){
                     echo "<p>nuevo usuario</p>";
+                    $sql_usuarios="select* from alumno ;";
                     try{
                         $consult=$base->prepare($sql_usuarios);
                         $consult->execute(array());
@@ -179,16 +183,15 @@
                         foreach ($usuarios as $user) {
                             ?>
                             <tr>
-                            <td><?php   echo $user['matricula'] ?></td>
-                                <td><?php   echo $user['nombre'] ?></td>
-                                <td><?php   echo $user['apellidoP'] ?></td>
-                                <td><?php   echo $user['apellidoM'] ?></td>
-                                <td><?php   echo $user['email'] ?></td>
-                                <td><?php   echo $user['turno'] ?></td>
+                            <td data-titulo="matricula"><?php   echo $user['matricula'] ?></td>
+                                <td data-titulo="nombre" colspan="2"><?php   echo $user['nombre'] ?></td>
+                           
+                                <td data-titulo="email"><?php   echo $user['email'] ?></td>
+                                <td data-titulo="turno"><?php   echo $user['turno'] ?></td>
                                 
-                                <td><?php   echo $user['tipo_usuario'] ?></td>
-                                <td><?php   echo $user['nivel_educativo'] ?></td>
-                                <td><?php   echo $user['grupo'] ?></td>
+                                <td data-titulo="tipo usuario"><?php   echo $user['tipo_usuario'] ?></td>
+                                <td data-titulo="nivel educativo"><?php   echo $user['nivel_educativo'] ?></td>
+                                <td data-titulo="grupo"><?php   echo $user['grupo'] ?></td>
                                  
                                  <td><a class="boton" href="alumnos1.php?txtID1=<?php $user['matricula'];?>" >editar</a></td>
                             </tr>

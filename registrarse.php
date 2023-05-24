@@ -35,6 +35,7 @@
    
 <?php
 include('conexion.php');
+require('matricula.php');
        if(isset($_POST['btn_envia'])){
         $matricula=$_POST['matricula'];
               $user=$_POST['user'];
@@ -62,20 +63,20 @@ include('conexion.php');
            
               }else{
                try{
-                
-                $query[0]="select * from alumno where matricula='{$matricula}'";
-                $query[1]="select * from profesor where matricula='{$matricula}'";
-                $query[2]="select * from servicios_escolares where matricula='{$matricula}'";
-                for ($i=0; $i <3 ; $i++) { 
-                  $consult=$base->prepare($query[$i]);
-                  $consult->execute(array());
-                  $matr=$consult->fetch(PDO::FETCH_ASSOC);     
-                 
-                   }
-                  
-     
-  if($matr>0){
-    echo "<p>la matricula ya existe en la bd</p>";
+                $r[0]=select("select * from alumno where matricula='{$matricula}'");
+                $r[1]=select("select * from profesor where matricula='{$matricula}'");
+                 $r[2]=select("select * from servicios_escolares where matricula='{$matricula}'");
+                $r[3]=select("select * from alumno where email='{$email}'");
+                $r[4]=select("select * from profesor where email='{$email}'");
+                 $r[5]=select("select * from servicios_escolares where email='{$email}'");
+              if( $r[0]>0||$r[1]>0||$r[2]>0){
+                  ?>
+                  <script>alert("la matricula  ya se encuentran en la BD")</script>
+                <?php
+              }else if($r[3]>0||$r[4]>0||$r[5]>0){?>
+                <script>alert("el email ya se encuentran en la BD")</script>
+                <?php
+    
     
   }else{
     $sql="insert into alumno (nombre,apellidoP,apellidoM,email,password,matricula)
