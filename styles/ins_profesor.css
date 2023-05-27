@@ -37,6 +37,8 @@ height:100vh;
      height: 100vh;
    display: flex;
    justify-content: center;
+   align-items: flex-start;
+   flex-direction: column;
        
       }
      
@@ -107,11 +109,16 @@ h2{
   background-color: lightseagreen;
  display: flex;
  flex-direction: column;
- 
- 
- height: 500px;
+ height: 1100px;
  margin-top: 30px;
- padding: 60px;
+ padding: 30px;
+}
+.formularioSelect{
+  width: 80%;
+  border: solid 1px lightgrey;
+  border-radius: 6px;
+  height: 100px;
+  margin-top: 20px;
 }
 #profesor{
   width: 100%;
@@ -121,10 +128,14 @@ h2{
   width: 100%;
   height: 30px;
 }
+.form_grupo h2{
+  color: blue;
+}
 .formulario h2{
   text-align: center;
   color: fire;
   text-transform: capitalize;
+  color: blue;
 }
 .formulario a[href="colegiatura.php"]{
   margin-bottom:60px;

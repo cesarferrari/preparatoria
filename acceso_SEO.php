@@ -26,7 +26,7 @@
              
                
                
-                <li><a href="destroy.php">inicio</a></li>
+                <li><a href="index.html">inicio</a></li>
                
                 <li><a href="noticias.php">noticias</a></li>
                 </ul>
@@ -34,7 +34,7 @@
             <div class="container">
     
             <div class="lateral">
-            <div class="option">
+    <div class="option">
         <div class="logotipo">
             <a href="acceso_SE.php">
             <i class="fa-solid fa-house"></i>
@@ -59,14 +59,12 @@
                 <h4>profesores</h4>
             </a>
         </div>
-
         <div class="logotipo">
             <a href="colegiatura.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4> Colegiaturas</h4>
             </a>
         </div>
-      
         <div class="logotipo">
             <a href="inscripcion.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
@@ -77,68 +75,49 @@
     </div>
             </div>
     
-            <div class="body">
-              
-              <div class="form_group">
-            <form  action="<?php htmlspecialchars($_SERVER['PHP_SELF'])?>" method="GET">
-             <select name="combo" id="combo">
-                <?php
-                require('conexion.php');
-                try{
-                $consult=$base->prepare("select distinct titulo from noticia");
-                $consult->execute(array());
-                $usuario=$consult->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($usuario as $user) {
-                    ?>
-                    <option value="<?php echo $user['titulo']?>"><?php echo $user['titulo']?></option>
-                    <?php
-                }
-            }catch(Exception $e){
-               $e->getMessage();
-            }
-                ?>
-              
-             </select>
-         <button type="submit" name="btn_combo">buscar</button>
-    </form>
-    </div>
-      <div class="boxt">
-      <?php
-         if(isset($_GET['btn_combo'])){
-        $titulo=$_GET['combo'];
-        llama_url($titulo);
-         }
-$title="primer prueba";
-llama_url($title);
+            <div class="cont">
 
-function llama_url($tit){
-    require("conexion.php");
+<div class="boxt">
+<img class="imagen1" src="imagen/prepa.jpg" alt="" width="100%">
+<div class="imagen">
+<p class="img-1">  En Educacion especial ABC, estamos comprometidos a brindar educación de calidad a niños de todas las capacidades.
+Nuestro equipo de maestros experimentados y dedicados trabaja incansablemente para crear un entorno de aprendizaje inclusivo
+y de apoyo que ayude a cada estudiante a alcanzar su máximo potencial. <br>
+Nuestro personal está formado por profesionales altamente calificados apasionados por su trabajo y comprometidos a ayudar
+a cada estudiante a alcanzar su máximo potencial.
+</p>
+</div>
+</div>
 
-    $sql="select * from noticia where titulo='$tit' ";
-    $urlImage;
-try{
-    $consult=$base->prepare($sql);
-    $consult->execute(array());
-    $usuario=$consult->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($usuario as $user) {
-        $texto=$user['noticia'];
 
-        $codificacion=mb_detect_encoding($texto,"UTF-8,ISO-8859-1");
-        $text=iconv($codificacion,'UTF-8',$texto);
-        ?>
-        <h2 class="encabezado"><?php echo $user['encabezado']?></h2>
- <p class="img-1"><?php 
-  echo $texto;
-  ?></p>
-  <img class="imagen1" src="<?php  echo $user['url']?>" alt="no disponible ">
-  <?php
-      }
-}catch(Exception $e){
-  $e->getMessage();
-}
-}
-?>
-  </div>
-    </div>
-                </body>
+
+
+        </div>
+        
+       
+   
+    
+          
+        </body>
 </html>
+
+<form action="<?php htmlspecialchars($_SERVER['PHP_SELF'])?>">
+    <select name="titulo" id="titulo">
+        <?php
+        function comboBox(){
+            foreach (select("select titulo from noticia") as $user) {
+                ?>
+                <option value="<?php echo $user['titulo']?>"><?php echo $user['titulo']?></option>
+
+
+                <?php
+                
+                
+            }
+            ?>
+            <input type="submit" name="combo">
+              </form>
+    
+
+<?php
+        }

@@ -36,6 +36,7 @@
 <?php
 include('conexion.php');
 require('matricula.php');
+session_start();
        if(isset($_POST['btn_envia'])){
         $matricula=$_POST['matricula'];
               $user=$_POST['user'];
@@ -91,7 +92,9 @@ require('matricula.php');
     $consulta->bindParam(':matricula',$matricula);
 
   if($consulta->execute()){
-echo "bienvenido ".$user." ".$apellidoP;
+    header("location:acceso.php");
+    $_SESSION['user']=$_POST['matricula'];
+    $_SESSION['name']=$user." ".$apellidoP." ".$apellidoM;
     }else{
       echo "error al guardar datos ";
     }
@@ -165,8 +168,11 @@ echo $e->getMessage();
     </div>
     <div class="box">
         <h2>SOBRE NOSOTROS</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, voluptas!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, dolores.</p>
+        <h3>somos una institucion que reconocemos el valor unico de cada niño
+por lo que nuestar tarea principal es conocer a cada uno de nuestros
+estudiantes y proporcionarles la estrategia de aprendizaje mas
+adecuada que ellos necesitan</h3>
+    
     </div>
     <div class="box">
         <h2>SIGUENOS</h2>

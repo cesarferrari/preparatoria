@@ -24,12 +24,12 @@
                 </a>
                 <ul>
                
-               <li class="bienvenida">bienvenido alumno lenidas el fuerte </li>
+               
                
              
                
                
-                <li><a href="index.html">inicio</a></li>
+                <li><a href="destroy.php">inicio</a></li>
                
                 <li><a href="noticias.php">noticias</a></li>
                 </ul>
@@ -44,54 +44,64 @@
                 <h4>principal</h4>
             </a>
         </div>
+
         <div class="logotipo">
-            <a href="http://">
+            <a href="#">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias alumnos</h4>
+                <h4>   alumnos</h4>
             </a>
         </div>
+
         <div class="logotipo">
-            <a href="http://">
+            <a href="#">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias alumnos</h4>
+                <h4>  alumnos</h4>
             </a>
         </div>
+
         <div class="logotipo">
-            <a href="http://">
+            <a href="#">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> incidencias alumnos</h4>
+                <h4>  alumnos</h4>
             </a>
         </div>
+
         <div class="logotipo">
-            <a href="http://">
+            <a href="#">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4> incidencias alumnos</h4>
+                <h4>  alumnos</h4>
             </a>
         </div>
       
-    </div>
             </div>
+            </div>
+            
     
             <div class="body">
-               <div class="left">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae officiis iure placeat tempora fuga, 
-                    modi adipisci impedit est quas nesciunt consequuntur culpa ullam quod, aliquam unde cumque! Rem, laborum
-                     omnis!
-                Ratione deleniti doloremque perferendis doloribus ducimus veniam ex officia id cumque tempora placeat earum
-                 possimus rerum, sit ipsum, odit sint illum. Aliquid architecto a aperiam facilis, quos dolore sunt commodi?
-                Ab ratione libero tempore explicabo. Eveniet ratione consectetur, veniam recusandae tempore quo aperiam nobis
-                 necessitatibus commodi quas? Animi a quaerat ad repellat accusantium. Eligendi odit impedit deserunt numquam
-                  facilis. Odit?</p>
-               </div>
-               <div class="right">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque optio minus animi tempora illum, facilis sed! 
-                Eveniet veniam, error natus eos quibusdam, velit odit ad doloremque similique enim qui eius?
-              Vero animi omnis dolorum earum, dicta perferendis enim corrupti similique natus est ullam ipsam magnam, provident,
-               quasi dolore quaerat non ducimus doloremque veniam quae. Ex, fuga consequuntur? Pariatur, odio illo!
-              Repellendus nesciunt ex qui perspiciatis veritatis aliquid eos et perferendis est laboriosam iure quisquam magnam 
-              aspernatur sint vitae nihil voluptas nemo, commodi natus inventore sequi! Velit temporibus modi vel incidunt.</p>
-               </div>
-            </div>
+               <?php
+               require('conexion.php');
+               session_start();
+               echo $_SESSION['user'];
+               $r=$_SESSION['user'];
+               $name='';
+               $consulta=$base->prepare("select* from alumno where matricula ='$r'");
+               $consulta->execute(array());
+               $usuario=$consulta->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($usuario as $key) {
+                    $name=$key['nombre']." ".$key['apellidoP']." ".$key['apellidoP'];
+                }
+               ?>
+              <br>
+                <p>PAGINA PRICIPAL ALUMNOS EN CONSTRUCCION</p><br><br>
+                <h3><?php echo $name?></h3>
+
+                <?php
+                 
+                ?>
+</div>
+</div>
+              
+            
         </div>
         
       

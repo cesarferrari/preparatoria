@@ -22,8 +22,8 @@
             </a>
             <ul>
                
-               <li class="bienvenida">bienvenido alumno lenidas el fuerte </li>
-                <li><a href="index.html">inicio</a></li>
+              
+                <li><a href="destroy.php">inicio</a></li>
                <li><a href="noticias.php">noticias</a></li>
                 </ul>
                 </nav>
@@ -66,23 +66,32 @@
         </div>
 
         <div class="body">
+
+        <?php
+               require('conexion.php');
+               session_start();
+           
+               $r=$_SESSION['user'];
+               $name='';
+               $consulta=$base->prepare("select* from profesor where matricula ='$r'");
+               $consulta->execute(array());
+               $usuario=$consulta->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($usuario as $key) {
+                    $name=$key['nombre']." ".$key['apellidoP']." ".$key['apellidoP'];
+                }
+               ?>
            <div class="left">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae officiis iure placeat tempora fuga, 
-                modi adipisci impedit est quas nesciunt consequuntur culpa ullam quod, aliquam unde cumque! Rem, laborum
-                 omnis!
-            Ratione deleniti doloremque perferendis doloribus ducimus veniam ex officia id cumque tempora placeat earum
-             possimus rerum, sit ipsum, odit sint illum. Aliquid architecto a aperiam facilis, quos dolore sunt commodi?
-            Ab ratione libero tempore explicabo. Eveniet ratione consectetur, veniam recusandae tempore quo aperiam nobis
-             necessitatibus commodi quas? Animi a quaerat ad repellat accusantium. Eligendi odit impedit deserunt numquam
-              facilis. Odit?</p>
+            <h3>
+            <?php echo $_SESSION['user']; ?></h3>
+              <p>PAGINA PRINCIPAL PROFESOR EN CONSTRUCCION</p> 
+               <br>
+               <h3>             <?php echo $name;
+?></h3>
+  
+            
            </div>
            <div class="right">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque optio minus animi tempora illum, facilis sed! 
-            Eveniet veniam, error natus eos quibusdam, velit odit ad doloremque similique enim qui eius?
-          Vero animi omnis dolorum earum, dicta perferendis enim corrupti similique natus est ullam ipsam magnam, provident,
-           quasi dolore quaerat non ducimus doloremque veniam quae. Ex, fuga consequuntur? Pariatur, odio illo!
-          Repellendus nesciunt ex qui perspiciatis veritatis aliquid eos et perferendis est laboriosam iure quisquam magnam 
-          aspernatur sint vitae nihil voluptas nemo, commodi natus inventore sequi! Velit temporibus modi vel incidunt.</p>
+          <p></p>
            </div>
         </div>
     </div>

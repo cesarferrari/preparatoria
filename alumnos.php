@@ -55,7 +55,7 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="colegiaturas.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4> Colegiaturas</h4>
             </a>

@@ -1,6 +1,7 @@
 <?php
 
 include("conexion.php");
+include('matricula.php');
 $nombre='';
 $apellido1='';
 $apellido2='';
@@ -25,26 +26,27 @@ try{
    echo 'the counter was='.$count;
 
    
-   if($count==1&&$usuarios){
-   
+   if($count==1 and $usuarios){
+    session_start();
       
-echo "nombre ".$nombre." apellido ".$apellido1." apellido materno".$apellido2;
- session_start();
- $_SESSION['code']=$usuario;
+ 
+
+ $_SESSION['user']=$usuario;
  
 header("location:acceso.php");
 $count=0;
-   }else if($count==2&&$usuarios){
+   }else if($count==2 and $usuarios){
+
     session_start();
- $_SESSION['code']=$usuario;
- 
-header("location:acceso_profesor.php");
-   }else if($count&&$usuarios){
+ $_SESSION['user']=$usuario;
+ header("location:acceso_profesor.php");
+
+   }else if($count and $usuarios){
     session_start();
-    $_SESSION['code']=$usuario;
-    
-   header("location:acceso_SE.php");
+    $_SESSION['user']=$usuario;
+    header("location:acceso_SE.php");
    $count=0;
+
    }else{
     $redirect='<script>  window.location.href=login.php</script>';
     header("location:login.php?error=usuario o contraseña no coinciden");

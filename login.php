@@ -13,6 +13,7 @@
 
     <div id="login">
 <div class="llave"> 
+   
 </div>
 <form action="dispersa.php" method="GET">
             <h1>Inicio de sesion</h1>
@@ -22,12 +23,14 @@
             <input type="password" id="pass" name="pass" placeholder="ingrese su contraseña"> <br><br>
             <input type="submit"><br><br>
             <?php
+            ?>
+             <a href="registrarse.php">nuevo usuario</a>
+             <?php
 if(isset($_GET['error'])){?>
-                <p class="error"><?php echo $_GET['error'];?></p>
+<p class="error"><?php echo $_GET['error'];?></p>
                 <?php } ?>
             </form>
-  <a href="registrarse.php">
-      <button>nuevo usuario</button></a>
+ 
    </div>
    
 </body>
