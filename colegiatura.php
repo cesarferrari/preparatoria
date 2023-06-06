@@ -41,7 +41,7 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="colegiatura.php">
             <i class="fa-regular fa-sack-dollar"></i>
                 <h4> Colegiaturas</h4>
             </a>
@@ -102,12 +102,13 @@
             </tr>
             <div class="tab">
                              <?php
+                             $imprimir=false;
                              require_once("conexion.php");
                              if(isset($_GET["btn_matricula"])){
                                 $matricula=$_GET["matricula"];
                                $fechaI=$_GET["fechaI"];
                                $fechaF=$_GET["fechaF"];
-                               $sql_matr="select a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha from colegiatura inner 
+                               $sql_matr="select a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha,id_colegiatura from colegiatura inner 
                                join alumno a on a.id=colegiatura.id_alumno where fecha between '{$fechaI}' and '{$fechaF}'
                                and matricula='{$matricula}';";
                                try{
@@ -121,49 +122,57 @@
                                  <td><?php echo $user['motivo'] ?></td>
                                   <td><?php  echo $user['monto']  ?></td>
                                   <td><?php   echo $user['fecha'] ?></td>
-                                   <td><a class="boton" >editar</a></td>
+                                  <td><button class="boton"><a  href="free_colegiatura.php?txtID=<?php echo $user['id_colegiatura']?>" >Editar</a></button>
                               </tr>
                               <?php
+                              $imprimir=true;
                                 }
                                 }catch(Exception $e){
                                    $e->getMessage();
                                }
+                         }else{
+                            $imprimir=false;
                          }
                           if(isset($_GET['btn_fecha'])){
                           
                             $fechaI=$_GET["fechaIA"];
                             $fechaF=$_GET["fechaFA"];
-                            $sql_matr="select a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha from colegiatura inner 
+                            $sql_matr="select a.matricula,a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha,id_colegiatura from colegiatura inner 
                             join alumno a on a.id=colegiatura.id_alumno where fecha between '{$fechaI}' and '{$fechaF}';";
                             try{
                              $consulta=$base->prepare($sql_matr);
                              $consulta->execute(array());
                              $usuario=$consulta->fetchAll(PDO::FETCH_ASSOC);
+                          
                              foreach ($usuario as $user) {
+                               $imprimir=true;
                              ?>
                            <tr>
                              <td colspan="2"><?php  echo $user['nombre']."  ".$user['apellidoP']."  ".$user['apellidoM']  ?></td>
                               <td><?php echo $user['motivo'] ?></td>
                                <td><?php  echo $user['monto']  ?></td>
                                <td><?php   echo $user['fecha'] ?></td>
-                                <td><a class="boton" >editar</a></td>
+                               <td><button class="boton"><a  href="free_colegiatura.php?txtID=<?php echo $user['id_colegiatura']?>" >Editar</a></button>
                            </tr>
+                      
                            <?php
+                          
                              }
                              }catch(Exception $e){
                                 $e->getMessage();
                             }
+                         }else{
+                            
                          }
                              
                              ?>   
-                      
-                    
-             
-                        
-                 
-
-
-        </table>
+                       </table><?php
+                       if($imprimir==true){
+                       echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }
+                       ?>
+                       
+                             
             </div>
              </div>
         

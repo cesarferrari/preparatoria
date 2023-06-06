@@ -106,7 +106,10 @@ height:100%;
   align-content: space-between;
 
 }
-
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
 h2{
   text-align: center;
 }
@@ -370,6 +373,7 @@ border-collapse: collapse;
       border-radius: 4px;
     
     }
+   
     .imagen1{
       width: 350px;
       height:270px;

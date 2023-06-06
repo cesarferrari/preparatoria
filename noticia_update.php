@@ -105,28 +105,36 @@
                    $titulo=$_POST['titulo'];
                    $encabezado=$_POST['encabezado'];
                    $noticia=$_POST['noticia'];
-                   $update=$base->prepare("update noticia set url=:url,titulo=:titulo,encabezado=:encabezado,
-                   noticia=:noticia where id_noticia=:id_noticia");
 
-                   $update->bindParam(':id_noticia',$id);
-                   $update->bindParam(':titulo',$titulo);
-                   $update->bindParam(':encabezado',$encabezado);
-                   $update->bindParam(':url',$url);
-                   $update->bindParam(':noticia',$noticia);
-                    if($update->execute()){
-                        ?>
-                        <script>
-                     alert("datos modificados  correctamente");
-                        </script>
-                      <?php
-                    }else{
-                        ?>
-                        <script>
-                     alert("error al modifcar");
-                        </script>
-                      <?php
-                    }
-
+                   if(empty($id)||empty($url)||empty($titulo)||empty($encabezado||empty($noticia))){
+                     ?>
+                       <script>
+                        alert("debe llenar todos los campos ");
+                       </script>
+                     <?php
+                }else{
+                    $update=$base->prepare("update noticia set url=:url,titulo=:titulo,encabezado=:encabezado,
+                    noticia=:noticia where id_noticia=:id_noticia");
+ 
+                    $update->bindParam(':id_noticia',$id);
+                    $update->bindParam(':titulo',$titulo);
+                    $update->bindParam(':encabezado',$encabezado);
+                    $update->bindParam(':url',$url);
+                    $update->bindParam(':noticia',$noticia);
+                     if($update->execute()){
+                         ?>
+                         <script>
+                      alert("datos modificados  correctamente");
+                         </script>
+                       <?php
+                     }else{
+                         ?>
+                         <script>
+                      alert("error al modifcar");
+                         </script>
+                       <?php
+                     }
+                }
 
                     }
 
@@ -141,8 +149,8 @@
            <div class="formulario">
            <div class="center"> <h5>Eliminar</h5></div>
            <div class="form_grupo">
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
-            <select name="seleccion" >
+            <form    action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
+            <select class="form_agrupa" name="seleccion" >
                 <?php 
                 require('conexion.php');
                 $consulta=$base->prepare("select* from noticia");

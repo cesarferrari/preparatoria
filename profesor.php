@@ -94,6 +94,7 @@
             <div class="tab">
           <?php
           require_once("conexion.php");
+             $bandera=false;
                  if(isset($_GET['btn_general'])){
                 $sql_grupo="select* from profesor";
                    try{
@@ -106,14 +107,19 @@
                             <td colspan="2"><?php   echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'] ?></td>
                             <td><?php   echo $user['email'] ?></td>
                             <td><?php   echo $user['matricula'] ?></td>
-                             <td><a class="boton" >editar</a></td>
+                            
+                            <td><button class="boton"><a  href="free_profesor.php?txtID=<?php echo $user['matricula']?>" >Editar</a></button>
+  </td>   
                         </tr>
                         <?php
+                        $bandera=true;
                     }
                     }catch(Exception $e){
                       $e->getMessage();
                     }
                  
+                 }else{
+                  //  $bander=false;
                  }
               
                  if(isset($_GET['btn_matricula'])){
@@ -135,19 +141,27 @@
                             <td colspan="2"><?php   echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'] ?></td>
                                 <td><?php   echo $user['email'] ?></td>
                                 <td><?php   echo $user['matricula'] ?></td>
-                                 <td><a class="boton"  >editar</a></td>
+                                <td><button class="boton"><a  href="free_profesor.php?txtID=<?php echo $user['matricula']?>" ></a>Editar</button>
+     </td>
                             </tr>
                             <?php
+                            $bandera=true;
                         }
                         }catch(Exception $e){
                           $e->getMessage();
                         }
+                 }else{
+                   // $bandera=false;
                  }
                  
                  ?>
 
 
-        </table>
+        </table>  <?php
+        if($bandera==true){
+     echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }
+                       ?>
             </div>
              </div>
         

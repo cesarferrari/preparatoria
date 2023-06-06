@@ -31,20 +31,36 @@ try{
       
  
 
- $_SESSION['user']=$usuario;
+ $_SESSION['user']=$usuario;?>
+<script>
+  window.location.href="acceso.php";
+</script>
+ <?php
  
-header("location:acceso.php");
+//header("location:acceso.php");
 $count=0;
    }else if($count==2 and $usuarios){
 
     session_start();
- $_SESSION['user']=$usuario;
- header("location:acceso_profesor.php");
+ $_SESSION['user']=$usuario;?>
+
+<script>
+ window.location.href="acceso_profesor.php";
+</script>
+<?php
+    
+ //header("location:acceso_profesor.php");
 
    }else if($count and $usuarios){
     session_start();
-    $_SESSION['user']=$usuario;
-    header("location:acceso_SE.php");
+    $_SESSION['user']=$usuario;?>
+<script>
+ window.location.href="acceso_SE.php";
+</script>
+
+<?php
+
+    //header("location:acceso_SE.php");
    $count=0;
 
    }else{

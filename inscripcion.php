@@ -126,7 +126,7 @@
                 <th>Editar</th>
             </tr>
             <?php
-                
+                $bandera=false;
                  $sql_var="";
                 
                  if(isset($_GET['btn_asignatura'])){
@@ -134,7 +134,7 @@
                    
                    echo "<p>{$asignatura}</p>";
                 
-                   $sql_grupo="select al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura
+                   $sql_grupo="select id_insc,al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura
                     insc inner join alumno al on al.id=insc.id_alumno inner join asignatura asig on
                      asig.id_asignatura=insc.id_asignatura where asig.asignatura='{$asignatura}';";
                    try{
@@ -149,9 +149,10 @@
                           
                             <td><?php   echo $user['asignatura'] ?></td>
                             <td><?php   echo $user['estatus'] ?></td>
-                             <td><a class="boton" href="alumnos1.php?txtID1=<?php $user['matricula'];?>" >editar</a></td>
+                            <td><button class="boton"><a  href="free_inscripcion.php?txtID=<?php echo $user['id_insc']?>" >Editar</a></button>
                         </tr>
                         <?php
+                        $bandera=true;
                     }
                     }catch(Exception $e){
                       $e->getMessage();
@@ -161,7 +162,7 @@
               
                  if(isset($_GET['btn_matricula'])){
                     $matricula=$_GET['matricula'];
-                    $sql_asignatura=" select al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura insc
+                    $sql_asignatura=" select id_insc,al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura insc
                     inner join alumno al on al.id=insc.id_alumno inner join asignatura asig on asig.id_asignatura=insc.id_asignatura 
                     where al.matricula={$matricula};";
                     echo "<p>{$matricula}</p>";
@@ -179,9 +180,10 @@
                             <td colspan="2"><?php   echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'] ?></td>
                                 <td><?php   echo $user['asignatura'] ?></td>
                                 <td><?php   echo $user['estatus'] ?></td>
-                                 <td><a class="boton" href="alumnos1.php?txtID1=<?php $user['matricula'];?>" >editar</a></td>
+                                <td><button class="boton"><a  href="free_inscripcion.php?txtID=<?php echo $user['id_insc']?>" >Editar</a</button>
                             </tr>
                             <?php
+                            $bandera=true;
                         }
                         }catch(Exception $e){
                           $e->getMessage();
@@ -191,7 +193,11 @@
                  ?>
 
 
-        </table>
+        </table> <?php
+        if($bandera==true){
+                       echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }
+                       ?>
             </div>
              </div>
         

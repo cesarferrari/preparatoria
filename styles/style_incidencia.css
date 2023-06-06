@@ -33,6 +33,7 @@
     border-radius: 8px;
     background: blue;
     color: white;
+    font-size: .9rem;
   }
   .lateral{
 
@@ -49,7 +50,7 @@ height:100vh;
      
    
    
-      
+    
      
   .option{
     background-color:#00008B;
@@ -79,16 +80,15 @@ height:100vh;
   a img{
     float: left;
   }
+
+
  .logotipo a{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-right: 5px;
-  margin-left:5px;
   border-bottom: none;
 
  }
-
-
 h2{
   text-align: center;
 }

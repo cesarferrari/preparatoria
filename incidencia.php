@@ -95,9 +95,9 @@
 <input type="date" name="f1" placeholder="fecha inicio">
 <input type="date" name="f2" placeholder="fecha fin">
 <input type="text" name="matricula" placeholder="matricula">
-<button  class="boton" name="btn_check_fecha">Fecha</button>
+<button  class="boton" name="btn_check_fecha">Buscar</button>
 </form>
-               <button class="btn_lat"><a href="agregar_incidencia.php"><h2>Nuevo</h2></a></button>
+               <button class="btn_lat"><a href="agregar_incidencia.php"><h2>Agregar </h2></a></button>
         </div>
                </div>
                <div class="right">
@@ -112,6 +112,7 @@
                        <?php
                        require("conexion.php");
                        require('matricula.php');
+                       $bandera=false;
                        $id=0;
                    if(isset($_GET['btn_check_fecha'])){
                      $matricula=$_GET['matricula'];
@@ -134,7 +135,7 @@ if($rol=="alumno" and  $matricula!=""){
             <td ><?php echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM']?></td>
             <td><?php echo $user['incidencia'] ?></td>
             <td><?php echo $user['fecha'] ?></td>
-            <td><button>Editar</button></td>
+            <td><button class="boton"><a  href="free_incidencia.php?txtID_se=<?php echo $user['id_incidencia']?>" >Editar</a></button>
         </tr>
       <?php
     }
@@ -153,13 +154,14 @@ if($rol=="alumno" and  $matricula!=""){
                            <!-- <td ><//?php echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM']?></td>-->
                             <td><?php echo $user['incidencia'] ?></td>
                             <td><?php echo $user['fecha'] ?></td>
-                            <td><button>Editar</button></td>
+                            <td><button class="boton"><a  href="free_incidencia.php?txtID_se=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                       <?php
+                      $bandera=true;
                     }
                 }else if($rol=="profesor" and  $matricula!=""){
                     
-    $id_se= select("select id_services from servicios_escolares where matricula='$matricula'");
+   // $id_se= select("select id_services from servicios_escolares where matricula='$matricula'");
     $consult=$base->prepare(incidenceMatr($fechaI,$fechaF,$matricula)[1]);
     $consult->execute(array());
     $usuario=$consult->fetchAll(PDO::FETCH_ASSOC);
@@ -169,9 +171,10 @@ if($rol=="alumno" and  $matricula!=""){
             <td ><?php echo $user['nombre']."  ".$user['apellidoP']."  ".$user['apellidoM']?></td>
             <td><?php echo $user['incidencia'] ?></td>
             <td><?php echo $user['fecha'] ?></td>
-            <td><button>Editar</button></td>
+            <td><button class="boton"><a  href="free_incidencia.php?txtID_prof=<?php echo $user['id_incidencia']?>" >Editar</a></button>
         </tr>
       <?php
+      $bandera=true;
     }
 
                 }else if($rol=="alumno"){
@@ -189,11 +192,12 @@ if($rol=="alumno" and  $matricula!=""){
                             <td ><?php echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM']?></td>
                             <td><?php echo $user['incidencia'] ?></td>
                             <td><?php echo $user['fecha'] ?></td>
-                            <td><button>Editar</button></td>
+                            <td><button class="boton"><a  href="free_incidencia.php?txtID_al=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                         
                         
                                             <?php
+                                            $bandera=true;
                       }
                
                    
@@ -202,7 +206,7 @@ if($rol=="alumno" and  $matricula!=""){
                    }else  if($rol=="profesor"){
                     $url_al= incidence($fechaI,$fechaF)[6];
                     
-                    $id_prof= select("select id_profesor from profesor where matricula='$matricula'");
+                  //  $id_prof= select("select id_profesor from profesor where matricula='$matricula'");
                     $consult=$base->prepare(incidence($fechaI,$fechaF)[6]);
                     $consult->execute(array());
                     $usuario=$consult->fetchAll(PDO::FETCH_ASSOC);
@@ -212,26 +216,30 @@ if($rol=="alumno" and  $matricula!=""){
                             <td ><?php echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM']?></td>
                             <td><?php echo $user['incidencia'] ?></td>
                             <td><?php echo $user['fecha'] ?></td>
-                            <td><button>Editar</button></td>
+                            <td><button class="boton"><a  href="free_incidencia.php?txtID_prof=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                       <?php
+                      $bandera=true;
                     }
                 }else if($rol=="SE"){
                     $url_se= incidence($fechaI,$fechaF)[6];
                     
-                    $id_se= select("select id_services from servicios_escolares where matricula='$matricula'");
+                  //  $id_se= select("select id_services from servicios_escolares where matricula='$matricula'");
                     $consult=$base->prepare("select* from incidencia where fecha between '$fechaI' and '$fechaF' ");
                     $consult->execute(array());
                     $usuario=$consult->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($usuario as $user ) {
+                       
                        ?>
+                      
        <tr>
                           
                             <td><?php echo $user['incidencia'] ?></td>
                             <td><?php echo $user['fecha'] ?></td>
-                            <td><button>Editar</button></td>
+                            <td><button class="boton"><a  href="free_incidencia.php?txtID_se=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                       <?php
+                      $bandera=true;
                     }
 
 
@@ -247,6 +255,11 @@ if($rol=="alumno" and  $matricula!=""){
 </tbody>
 
                   </table>
+                  <?php
+        if($bandera==true){
+                       echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }
+                       ?>
                </div>
             </div>
         </div>
