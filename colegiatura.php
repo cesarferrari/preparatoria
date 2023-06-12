@@ -102,7 +102,11 @@
             </tr>
             <div class="tab">
                              <?php
-                             $imprimir=false;
+                             $imprimirX=false;
+                             $imprimirY=false;
+                            $matrix="";
+                            $fechaI="";
+                            $fechaF="";
                              require_once("conexion.php");
                              if(isset($_GET["btn_matricula"])){
                                 $matricula=$_GET["matricula"];
@@ -125,13 +129,14 @@
                                   <td><button class="boton"><a  href="free_colegiatura.php?txtID=<?php echo $user['id_colegiatura']?>" >Editar</a></button>
                               </tr>
                               <?php
-                              $imprimir=true;
+                              $imprimirX=true;
+                              $matrix=$matricula;
                                 }
                                 }catch(Exception $e){
                                    $e->getMessage();
                                }
                          }else{
-                            $imprimir=false;
+                            //$imprimir=false;
                          }
                           if(isset($_GET['btn_fecha'])){
                           
@@ -145,7 +150,7 @@
                              $usuario=$consulta->fetchAll(PDO::FETCH_ASSOC);
                           
                              foreach ($usuario as $user) {
-                               $imprimir=true;
+                               $imprimirY=true;
                              ?>
                            <tr>
                              <td colspan="2"><?php  echo $user['nombre']."  ".$user['apellidoP']."  ".$user['apellidoM']  ?></td>
@@ -167,8 +172,10 @@
                              
                              ?>   
                        </table><?php
-                       if($imprimir==true){
-                       echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       if($imprimirX){
+                       echo" <a class='center' href='pdf_colegiaturaX.php?txt_matr=$matrix & txt_fechaI=$fechaI & txt_fechaF=$fechaF'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }else if($imprimirY){
+                        echo" <a class='center' href='pdf_colegiaturaY.php?txt_fechaI=$fechaI & txt_fechaF=$fechaF'> <button class='boton'> IMPRIMIR PDF</button></a>";
                        }
                        ?>
                        

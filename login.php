@@ -39,73 +39,81 @@ include('matricula.php');
 $nombre='';
 $apellido1='';
 $apellido2='';
+$contador=0;
 if(isset($_GET["user"])&&isset($_GET["pass"])){
 $usuario=$_GET["user"];
 $pass=$_GET["pass"];
-$query[0]="select * from alumno where matricula='$usuario' and password='$pass'";
-$query[1]="select * from profesor where matricula='$usuario' and password='$pass'";
-$query[2]="select * from servicios_escolares where matricula='$usuario' and password='$pass'";
+$query[0]="select * from alumno where matricula='$usuario' ";
+$query[1]="select * from profesor where matricula='$usuario' ";
+$query[2]="select * from servicios_escolares where matricula='$usuario' ";
 $count=0;
+$contador;
 try{
 
-  for ($i=0; $i <3; $i++) { 
-    $consulta=$base->query($query[$i]);
-    $consulta->execute(array());
-    $usuarios=$consulta->fetchAll(PDO::FETCH_ASSOC);
+  $consult=$base->prepare($query[0]);
+  $consult->execute();
+  $usuario1=$consult->fetchAll(PDO::FETCH_ASSOC);
+  
+  foreach ($usuario1 as $user) {
     $count++;
-    if($usuarios){
-      break;
+    if(password_verify($pass,$user['password'])){
+     
+     $contador++;
     }
   }
-  // echo 'the counter was='.$count;
-
    
-   if($count==1 and $usuarios){
-    session_start();
-      
- 
+  
 
- $_SESSION['user']=$usuario;?>
-<script>
-  window.location.href="acceso.php";
-</script>
- <?php
- 
-//header("location:acceso.php");
-$count=0;
-   }else if($count==2 and $usuarios){
-
-    session_start();
- $_SESSION['user']=$usuario;?>
-
-<script>
- window.location.href="acceso_profesor.php";
-</script>
-<?php
-    
- //header("location:acceso_profesor.php");
-
-   }else if($count and $usuarios){
-    session_start();
-    $_SESSION['user']=$usuario;?>
-<script>
- window.location.href="acceso_SE.php";
-</script>
-
-<?php
-
-    //header("location:acceso_SE.php");
-   $count=0;
-
-   }else{
-    $redirect='<script>  window.location.href=login.php</script>';
-    header("location:login.php?error=usuario o contraseña no coinciden");
-    $count=0;
-    exit();
-   }
 }catch(Exception $e){
 echo "error";
 }
+try{
+
+  $consult=$base->prepare($query[1]);
+  $consult->execute();
+  $usuario2=$consult->fetchAll(PDO::FETCH_ASSOC);
+  
+  foreach ($usuario2 as $user) {
+    $count++;
+    if(password_verify($pass,$user['password'])){
+     
+     $contador++;
+    }
+  }
+   
+  
+
+}catch(Exception $e){
+echo "error";
+}
+try{
+
+  $consult=$base->prepare($query[2]);
+  $consult->execute();
+  $usuario3=$consult->fetchAll(PDO::FETCH_ASSOC);
+  
+  foreach ($usuario3 as $user) {
+    $count++;
+    if(password_verify($pass,$user['password'])){
+     
+     $contador++;
+    }
+  }
+   
+  
+
+}catch(Exception $e){
+echo "error";
+}
+if($usuario1 and $contador>0){
+
+header('location:acceso.php');
+}else if($usuario2 and $contador>0){
+  header('location:acceso_profesor.php');
+}else if($usuario3 and $contador>0){
+   header('location:acceso_SE.php');
+}
+
 
 }
 

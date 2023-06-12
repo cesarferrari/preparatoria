@@ -128,7 +128,7 @@
               </div>
 
              <div class="form_box">
-             <label for="tipo_usuario">nivel educativo</label>
+             <label for="tipo_usuario">tipo de usuario</label>
                 <select name="tipo_usuario" id="tipo_usuario">
                     <option value="<?php echo $user['tipo_usuario']?>"><?php echo $user['tipo_usuario']?></option>
                     <option value="Alumno">Alumno</option>

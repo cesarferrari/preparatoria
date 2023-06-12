@@ -128,7 +128,10 @@
             <?php
                 $bandera=false;
                  $sql_var="";
-                
+                $asignatura='';
+                $matricula='';
+                $bandera=false;
+                $flag=false;
                  if(isset($_GET['btn_asignatura'])){
                    $asignatura=$_GET['asignatura'];
                    
@@ -183,7 +186,7 @@
                                 <td><button class="boton"><a  href="free_inscripcion.php?txtID=<?php echo $user['id_insc']?>" >Editar</a</button>
                             </tr>
                             <?php
-                            $bandera=true;
+                            $flag=true;
                         }
                         }catch(Exception $e){
                           $e->getMessage();
@@ -195,7 +198,9 @@
 
         </table> <?php
         if($bandera==true){
-                       echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       echo" <a class='center' href='pdf_inscripcion.php?txtAsig=$asignatura'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }else if($flag){
+                        echo" <a class='center' href='pdf_inscripcion.php?txtMatr=$matricula'>  <button class='boton'> IMPRIMIR PDF</button></a>";
                        }
                        ?>
             </div>

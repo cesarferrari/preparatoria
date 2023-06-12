@@ -208,7 +208,7 @@
                         }
                               
                             try{
-                                $insert=$base->prepare("insert into incidencia(incidencia,id_se,fecha)values(:incidencia,:id_se,now())");
+                                $insert=$base->prepare("insert into incidencia(incidencia,id_alumno,fecha)values(:incidencia,:id_se,now())");
                                  $insert->bindParam(':incidencia',$area);
                                  $insert->bindParam(':id_se',$id);
                                  if($insert->execute()){

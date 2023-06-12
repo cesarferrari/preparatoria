@@ -83,6 +83,7 @@
             <form  action="<?php htmlspecialchars($_SERVER['PHP_SELF'])?>" method="GET">
              <select name="combo" id="combo">
                 <?php
+                $title;
                 require('conexion.php');
                 try{
                 $consult=$base->prepare("select distinct titulo from noticia");
@@ -96,6 +97,8 @@
             }catch(Exception $e){
                $e->getMessage();
             }
+          
+
                 ?>
               
              </select>
@@ -106,10 +109,11 @@
       <?php
          if(isset($_GET['btn_combo'])){
         $titulo=$_GET['combo'];
+     
         llama_url($titulo);
          }
-$title="primer prueba";
-llama_url($title);
+
+llamados();
 
 function llama_url($tit){
     require("conexion.php");
@@ -137,6 +141,34 @@ try{
   $e->getMessage();
 }
 }
+function llamados(){
+    require("conexion.php");
+    
+
+    $sql="select * from noticia order by id_noticia desc limit 5; ";
+    $urlImage;
+try{
+    $consult=$base->prepare($sql);
+    $consult->execute(array());
+    $usuario=$consult->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($usuario as $user) {
+        $texto=$user['noticia'];
+
+        
+        ?>
+        
+ <p class="img-1"><?php 
+  echo $texto;
+  ?></p>
+  <img class="imagen1" src="<?php  echo $user['url']?>" alt="no disponible ">
+  <h2 class="encabezado"><?php echo $user['encabezado']?></h2>
+  <?php
+      }
+}catch(Exception $e){
+  $e->getMessage();
+}
+}
+
 ?>
   </div>
     </div>

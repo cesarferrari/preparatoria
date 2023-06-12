@@ -102,20 +102,6 @@ h2{
   display: flex;
   flex-direction: column;
 }
-
-.form_agrupa{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  border: solid 1px whitesmoke;
-  padding: 5px;
- border-radius:4px ;
-  height: 40px;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .formulario{
   width: 80%;
   border: solid 3px lightgrey;
@@ -177,11 +163,6 @@ border-radius: 4px;
 width: 80px;
 height: 30px;
 margin: 12PX 15px;
-}
-.form_grupo  {
-height: 12px;
-width: 150px;
-background-color: aqua;
 }
 
 .button2{

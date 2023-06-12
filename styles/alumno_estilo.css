@@ -237,15 +237,12 @@ label{
   font-weight: bolder;
   text-transform: uppercase;
 }
-.selects{
-  max-width: 1200px;
-  width: 850px;
+select{
+  width:100%;
   border: solid 1px blue;
   border-radius: 4px;
   height: 25px;
   font-size: 1.0rem;
-  display: flex;
-  justify-content: flex-start;
 }
 select option[value]{
   font-size: 1.2rem;

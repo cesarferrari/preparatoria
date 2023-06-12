@@ -88,7 +88,8 @@
          if(isset($_GET['txtID'])){
             $id=$_GET['txtID'];
          
-              $edita=$base->prepare('select* from profesor where matricula ='.$id);
+              $edita=$base->prepare("select prof.matricula,asig.id_asignatura,asig.asignatura,asig.nivel_educativo,prof.nombre,prof.apellidoP,prof.apellidoM,prof.email
+               from asignatura asig inner join profesor prof on prof.id_profesor=asig.id_asignatura where prof.matricula=$id;");
               $edita->execute(array());
               $usuario=$edita->fetchAll(PDO::FETCH_ASSOC);
               foreach ($usuario as $user) {
@@ -111,16 +112,20 @@
              <label for="apellido">ApellidoP</label>
                 <input type="text" name="apellidoP" value="<?php echo $user['apellidoP']?>">
              </div>
-
              <div class="form_box">
              <label for="apellidoM">ApellidoM</label>
                 <input type="text" name="apellidoM" value="<?php echo $user['apellidoM']?>">
              </div>
+             <div class="form_box">
+             <label for="email">Email</label>
+                <input type="text" name="email" value="<?php echo $user['email']?>">
+             </div>
+            
            <div class="form_boz">
            <button class="b2"  name="btn_edicion" id="grupo">EDITAR</button>
            </div>
                  </form>
-                 <a href="alumnos.php">regresar</a>
+                 <a href="profesor.php">regresar</a>
                 </div>
                 <?php
             }
@@ -128,18 +133,19 @@
 
         if(isset($_GET['btn_edicion'])){
          
+            
             $nombre=$_GET['nombre'];
             $apellidoP=$_GET['apellidoP'];
             $apellidoM=$_GET['apellidoM'];
-      
              $matricula=$_GET['matricula'];
             $edicion=$base->prepare("update profesor set nombre=:nombre,apellidoP=:apellidoP,apellidoM=:apellidoM 
-             where matricula=$matricula");
+             where matricula=:matricula");
              
-            $edicion->bindParam(':nombre',$nombre);
-               $edicion->bindParam(':apellidoP',$apellidoP);
-                  $edicion->bindParam(':apellidoM',$apellidoM);
             
+               $edicion->bindParam(':nombre',$nombre);
+                  $edicion->bindParam(':apellidoP',$apellidoP);
+                   $edicion->bindParam(':apellidoM',$apellidoM);
+                   $edicion->bindParam(':matricula',$matricula);            
                      if($edicion->execute()){
                        ?>
                      <script>alert('datos editados correctamente')

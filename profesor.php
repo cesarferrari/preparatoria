@@ -89,6 +89,8 @@
                 <th colspan="2">Nombre</th>
                 <th>Email</th>
                 <th>Matricula</th>
+                <th>Asignatura</th>
+                <th>nivel</th>
                 <th>Editar</th>
             </tr>
             <div class="tab">
@@ -96,7 +98,8 @@
           require_once("conexion.php");
              $bandera=false;
                  if(isset($_GET['btn_general'])){
-                $sql_grupo="select* from profesor";
+              //  $sql_grupo="select* from profesor";
+                $sql_grupo="select prof.id_profesor,asig.id_asignatura,asig.asignatura,asig.nivel_educativo,prof.nombre,prof.apellidoP,prof.apellidoM ,prof.email,prof.matricula from asignatura  asig inner join profesor prof on asig.id_profesor=prof.id_profesor;";
                    try{
                     $consult=$base->prepare($sql_grupo);
                     $consult->execute(array());
@@ -107,7 +110,8 @@
                             <td colspan="2"><?php   echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'] ?></td>
                             <td><?php   echo $user['email'] ?></td>
                             <td><?php   echo $user['matricula'] ?></td>
-                            
+                            <td><?php     echo $user['asignatura']?></td>
+                            <td><?php     echo $user['nivel_educativo']?></td>
                             <td><button class="boton"><a  href="free_profesor.php?txtID=<?php echo $user['matricula']?>" >Editar</a></button>
   </td>   
                         </tr>
@@ -124,8 +128,10 @@
               
                  if(isset($_GET['btn_matricula'])){
                     $matricula=$_GET['matricula'];
-                    $sql_asignatura=" select nombre,apellidoP,apellidoM,email,matricula from profesor 
-                    where matricula  ={$matricula};";
+                    //$sql_asignatura=" select nombre,apellidoP,apellidoM,email,matricula from profesor 
+                    //where matricula  ={$matricula};";
+                    $sql_asignatura="select prof.id_profesor,asig.id_asignatura,asig.asignatura,asig.nivel_educativo,prof.nombre,prof.apellidoP,prof.apellidoM ,prof.email,prof.matricula from asignatura  asig inner join profesor prof 
+                    on asig.id_profesor=prof.id_profesor where prof.matricula=$matricula;";
                     echo "<p>{$matricula}</p>";
                  
                 
@@ -141,8 +147,10 @@
                             <td colspan="2"><?php   echo $user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'] ?></td>
                                 <td><?php   echo $user['email'] ?></td>
                                 <td><?php   echo $user['matricula'] ?></td>
-                                <td><button class="boton"><a  href="free_profesor.php?txtID=<?php echo $user['matricula']?>" ></a>Editar</button>
-     </td>
+                                <td><?php     echo $user['asignatura']?></td>
+                                <td><?php     echo $user['nivel_educativo']?></td>
+                                <td><button class="boton"><a  href="free_profesor.php?txtID=<?php echo $user['matricula']?>" >Editar</a></button>
+                                </td>
                             </tr>
                             <?php
                             $bandera=true;
@@ -159,7 +167,7 @@
 
         </table>  <?php
         if($bandera==true){
-     echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+     echo" <a class='center' href='pdf_profesor.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
                        }
                        ?>
             </div>

@@ -171,27 +171,27 @@
                          
                           <div class="formularioX">
                           <div class="center"><h5>Modificar</h5></div>
-           <div class="form_grupo">
+           <div class="for_grupo">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
         
-            <div class="form_grupo">
+            <div class="for_grupo">
            <label class="form_label" for="url">ID</label>
                 <input type="text" id="id" name="ID" placeholder="identificador #" > 
                 </div>
 
-            <div class="form_grupo">
+            <div class="for_grupo">
            <label class="form_label" for="url">URL</label>
                 <input type="text" id="nombre" name="url" placeholder="ingrese URL de la imagen" > 
                 </div>
-                <div class="form_grupo">
+                <div class="for_grupo">
            <label class="form_label" for="tipo">titulo</label>
                 <input type="text" id="nombre" name="titulo" placeholder="ingrese titulo de la noticia"   > 
                 </div>
-                <div class="form_grupo">
+                <div class="for_grupo">
            <label class="form_label" for="tipo">encabezado</label>
                 <input type="text" id="encabezado" name="encabezado" placeholder="encabezado de la nota"  > 
                 </div>
-             <div class="form_grupo">
+             <div class="for_grupo">
            <label class="form_label" for="noticia">noticia</label>
             <textarea  autofocus maxleinght=200 name="noticia" id="" cols="30" rows="5"  ></textarea>
                 </div>

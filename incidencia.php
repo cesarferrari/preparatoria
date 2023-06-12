@@ -61,7 +61,7 @@
         </div>
 
         <div class="logotipo">
-            <a href="colegiaturas.php">
+            <a href="colegiatura.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                 <h4> Colegiaturas</h4>
             </a>
@@ -112,8 +112,13 @@
                        <?php
                        require("conexion.php");
                        require('matricula.php');
-                       $bandera=false;
+                       $student=false;$studentX=false;
+                       $teacher=false;$teacherX=false;
+                       $SE=false;$se_X=false;
                        $id=0;
+                       $matricula="";
+                       $fechaI="";
+                       $fechaF="";
                    if(isset($_GET['btn_check_fecha'])){
                      $matricula=$_GET['matricula'];
                      $fechaI=$_GET['f1'];
@@ -137,7 +142,9 @@ if($rol=="alumno" and  $matricula!=""){
             <td><?php echo $user['fecha'] ?></td>
             <td><button class="boton"><a  href="free_incidencia.php?txtID_se=<?php echo $user['id_incidencia']?>" >Editar</a></button>
         </tr>
+     
       <?php
+         $student=true;
     }
 
 
@@ -157,7 +164,7 @@ if($rol=="alumno" and  $matricula!=""){
                             <td><button class="boton"><a  href="free_incidencia.php?txtID_se=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                       <?php
-                      $bandera=true;
+                      $SE=true;
                     }
                 }else if($rol=="profesor" and  $matricula!=""){
                     
@@ -174,7 +181,7 @@ if($rol=="alumno" and  $matricula!=""){
             <td><button class="boton"><a  href="free_incidencia.php?txtID_prof=<?php echo $user['id_incidencia']?>" >Editar</a></button>
         </tr>
       <?php
-      $bandera=true;
+      $teacher=true;
     }
 
                 }else if($rol=="alumno"){
@@ -197,7 +204,7 @@ if($rol=="alumno" and  $matricula!=""){
                         
                         
                                             <?php
-                                            $bandera=true;
+                                            $studentX=true;
                       }
                
                    
@@ -219,7 +226,7 @@ if($rol=="alumno" and  $matricula!=""){
                             <td><button class="boton"><a  href="free_incidencia.php?txtID_prof=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                       <?php
-                      $bandera=true;
+                      $teacherX=true;
                     }
                 }else if($rol=="SE"){
                     $url_se= incidence($fechaI,$fechaF)[6];
@@ -239,7 +246,7 @@ if($rol=="alumno" and  $matricula!=""){
                             <td><button class="boton"><a  href="free_incidencia.php?txtID_se=<?php echo $user['id_incidencia']?>" >Editar</a></button>
                         </tr>
                       <?php
-                      $bandera=true;
+                      $SE=true;
                     }
 
 
@@ -256,9 +263,19 @@ if($rol=="alumno" and  $matricula!=""){
 
                   </table>
                   <?php
-        if($bandera==true){
-                       echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
-                       }
+        if($student==true){
+                       echo" <a class='center' href='pdf_incidencia.php?txtMatr=$matricula&txtFechaI=$fechaI&txtFechaF=$fechaF&txtEstudiante=estudiante'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }else if($studentX){
+                        echo" <a class='center' href='pdf_incidencia.php?txtFechaI=$fechaI&txtFechaF=$fechaF&txtEstudiante=estudiante'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                        }else if($teacherX){
+                            echo" <a class='center' href='pdf_incidencia.php?txtFechaI=$fechaI&txtFechaF=$fechaF&txtProfesor=profesor'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                            }else if($teacher){
+                                echo" <a class='center' href='pdf_incidencia.php?txtMatr=$matricula&txtFechaI=$fechaI&txtFechaF=$fechaF&txtProfesor=profesor'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                                }else if($SE==true){
+                                    echo" <a class='center' href='pdf_incidencia.php?txtFechaI=$fechaI&txtFechaF=$fechaF&txtSe=servicios_escolares'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                                    }else {
+                                        //echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                                        }
                        ?>
                </div>
             </div>

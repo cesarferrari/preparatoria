@@ -83,12 +83,13 @@ session_start();
     $sql="insert into alumno (nombre,apellidoP,apellidoM,email,password,matricula)
     values(:nombre,:apellidoP,:apellidoM,:email,:password,:matricula)";
    $consulta= $base->prepare($sql);
+   $hash=password_hash($pass,PASSWORD_DEFAULT);
     $consulta->bindParam(':nombre',$user);
     $consulta->bindParam(':apellidoP',$apellidoP);
     $consulta->bindParam(':apellidoM',$apellidoM);
    
    $consulta->bindParam(':email',$email);
-    $consulta->bindParam(':password',$pass);
+    $consulta->bindParam(':password',$hash);
     $consulta->bindParam(':matricula',$matricula);
 
   if($consulta->execute()){

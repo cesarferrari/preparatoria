@@ -136,6 +136,9 @@
                  
               require_once("conexion.php");
                 $bandera=false;
+                $flag=false;
+                $nv='';
+                $g='';
                  if(isset($_GET['btn_grupo'])){
                    $nivel1=$_GET['nivel_1'];
                    $grupo=$_GET['grupo'];
@@ -160,10 +163,12 @@
                             <td data-titulo="nivel educativo"><?php   echo $user['nivel_educativo'] ?></td>
                             <td data-titulo="grupo"><?php   echo $user['grupo'] ?></td>
      <td><button class="boton"><a  href="free.php?txtID=<?php echo $user['matricula']?>" >editar</a></button>
-     <button class="boton"><a  href="" >Imprimir</a></button> </td>
+    
                         </tr>
                         <?php
                         $bandera=true;
+                        $nivel1=$_GET['nivel_1'];
+                        $grupo=$_GET['grupo'];
                     }
                     }catch(Exception $e){
                       $e->getMessage();
@@ -176,9 +181,10 @@
                     $asignatura=$_GET['asignatura'];
                     echo "<p>{$nivel2}  {$asignatura}</p>";
                  }
+
                  if(isset($_GET['btn_user'])){
                     echo "<p>nuevo usuario</p>";
-                    $sql_usuarios="select* from alumno ;";
+                    $sql_usuarios="select* from alumno where tipo_usuario not in('alumno');";
                     try{
                         $consult=$base->prepare($sql_usuarios);
                         $consult->execute(array());
@@ -197,11 +203,11 @@
                                 <td data-titulo="grupo"><?php   echo $user['grupo'] ?></td>
                                  
                                 <td><button class="boton"><a  href="free.php?txtID=<?php echo $user['matricula']?>" >editar</a></button>
-                                <button class="boton"><a  href="" >Imprimir</a></button>
+                            
     </td>
                             </tr>
                             <?php
-                            $bandera=true;
+                            $flag=true;
                         }
                         }catch(Exception $e){
                           $e->getMessage();
@@ -211,18 +217,17 @@
                  ?>
                 </table>
                 <?php
-        if($bandera==true){
-     echo" <a class='center' href='pdf_colegiatura.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+        if($bandera){
+     echo" <a class='center' href='pdf_alumno.php?txtNV=$nivel1&txtGR=$grupo'>  <button class='boton'> IMPRIMIR PDF</button></a>";
+                       }else if($flag){
+                        echo" <a class='center' href='pdf_alumno.php'>  <button class='boton'> IMPRIMIR PDF</button></a>";
                        }
                        ?>
             </div>
            <?php
            
-           if(isset($_GET['txtID1'])){
-            $id=$_GET['txtID1'];
-
-echo(  $id );
-           }
+         
+           
            
            ?>
            </div>

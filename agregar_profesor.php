@@ -148,14 +148,15 @@ alert("debe llenar todos los campos");
                     <script>alert("el email ya se encuentran en la BD")</script>
                     <?php
                   }else{
-                    $pass=rand(10000000,9999999);
+                    $pass="0000";
+                    $hashprofesor=password_hash($pass,PASSWORD_DEFAULT);
                       $consult=$base->prepare("insert into profesor(nombre,apellidoP,apellidoM,email,password,matricula)values
                       (:nombre,:apellidoP,:apellidoM,:email,:password,:matricula)");
                       $consult->bindParam(':nombre',$nombre);
                       $consult->bindParam(':apellidoP',$apellidoP);
                      $consult->bindParam(':apellidoM',$apellidoM);
                      $consult->bindParam(':email',$email);
-                     $consult->bindParam(':password',$pass);
+                     $consult->bindParam(':password',$hashprofesor);
                      $consult->bindParam(':matricula',$matricula);
                     if($consult->execute()){
                       ?>
