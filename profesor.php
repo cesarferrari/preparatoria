@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/colegiatura.css">
+        <link rel="stylesheet" href="styles/style_asignatura.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -26,6 +26,12 @@
                 </ul>
                     </nav>
             <div class="container">
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                 header('location:login.php');
+                }
+                ?>
     <div class="lateral">
             <div class="option">
    <div class="logotipo">

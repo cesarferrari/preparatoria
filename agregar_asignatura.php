@@ -27,13 +27,18 @@
              
                
                
-                <li><a href="index.html">inicio</a></li>
+                <li><a href="destroy.php">inicio</a></li>
                
                 <li><a href="noticias.php">noticias</a></li>
                 </ul>
                     </nav>
             <div class="container">
-    
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                  header('location:login.php');
+                }
+                ?>
             <div class="lateral">
     <div class="option">
    
@@ -44,9 +49,9 @@
             </a>
         </div>
         <div class="logotipo">
-            <a href="http://">
+            <a href="incidencia.php">
                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
-                <h4>  incidencias profesores</h4>
+                <h4>  incidencias </h4>
             </a>
         </div>
         <div class="logotipo">
@@ -122,11 +127,51 @@
                     <div class="inputa">
                     <button  class="button2" type="submit" name="btn_envia">guardar</button>
                     </div>
+                    <h2 class="form_elimina" for="grupo">Eliminar asignatura</h2> 
                 </form>
+                <div class="elimina">
+                <form action="<?php  echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="form_grupo" method="POST">
+                 
+                
+             
+                 <?php 
+                 include('conexion.php');
+                 $sql="select asig.id_asignatura,asig.asignatura,prof.nombre,prof.apellidoP,prof.apellidoM from asignatura  asig inner join profesor prof on asig.id_profesor=prof.id_profesor;";
+          
+                 $query=$base->prepare($sql);
+                  $query->execute();
+                  $results=$query->fetchAll(PDO::FETCH_ASSOC);
+                  ?>
+                  <select name="asig" id="asig">
+                  <option value="elige unan opcion">elige una opcion</option>
+                <?php  foreach ($results as $res ){?>
+                 
+                     <option value="<?php echo $res['id_asignatura'];?>">
+                     <?php echo $res['asignatura']." ".$res['nombre']." ".$res['apellidoP']." ".$res['apellidoM'];?></option>
+                    <?php }
+?>
+   </select>
+<button class="boton"  name="btn_elimina" id="grupo">ELIMINAR</button>
+              </form>
+              </div>
             </div>
+
+            
+         
 
                 <?php
                 include('conexion.php');
+                if(isset($_POST['btn_elimina'])){
+                   $asig_delete=$_POST['asig'];
+
+                   $consultDelete=$base->prepare("delete from asignatura where id_asignatura=$asig_delete");
+                   if($consultDelete->execute()){
+                     ?>
+                   <script>alert('asignatura eliminada correctamente')</script>
+                     <?php
+                   }
+                }
+
                 if(isset($_POST['btn_envia'])){
                   $asignatura=$_POST['asignatura'];
                   $profesor=$_POST['profesor'];

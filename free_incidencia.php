@@ -28,7 +28,12 @@
                     </nav>
             <div class="container">
     <div class="lateral">
-      
+    <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
     <div class="option">
         <div class="logotipo">
             <a href="acceso_SE.php">

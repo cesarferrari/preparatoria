@@ -27,13 +27,18 @@
              
                
                
-                <li><a href="index.html">inicio</a></li>
+                <li><a href="destroy.php">inicio</a></li>
                
                 <li><a href="noticias.php">noticias</a></li>
                 </ul>
                     </nav>
             <div class="container">
-    
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                  header('location:login.php');
+                }
+                ?>
             <div class="lateral">
     <div class="option">
    

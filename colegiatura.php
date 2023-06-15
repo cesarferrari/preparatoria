@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/colegiatura.css">
+        <link rel="stylesheet" href="styles/style_asignatura.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -26,6 +26,12 @@
                 </ul>
                     </nav>
             <div class="container">
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
     <div class="lateral">
             <div class="option">
    <div class="logotipo">
@@ -112,7 +118,7 @@
                                 $matricula=$_GET["matricula"];
                                $fechaI=$_GET["fechaI"];
                                $fechaF=$_GET["fechaF"];
-                               $sql_matr="select a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha,id_colegiatura from colegiatura inner 
+                               $sql_matr="select id_colegiatura,a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha,id_colegiatura from colegiatura inner 
                                join alumno a on a.id=colegiatura.id_alumno where fecha between '{$fechaI}' and '{$fechaF}'
                                and matricula='{$matricula}';";
                                try{
@@ -142,7 +148,7 @@
                           
                             $fechaI=$_GET["fechaIA"];
                             $fechaF=$_GET["fechaFA"];
-                            $sql_matr="select a.matricula,a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha,id_colegiatura from colegiatura inner 
+                            $sql_matr="select id_colegiatura,a.matricula,a.nombre,a.apellidoM,a.apellidoP,motivo,monto,fecha,id_colegiatura from colegiatura inner 
                             join alumno a on a.id=colegiatura.id_alumno where fecha between '{$fechaI}' and '{$fechaF}';";
                             try{
                              $consulta=$base->prepare($sql_matr);

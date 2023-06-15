@@ -40,6 +40,7 @@ $nombre='';
 $apellido1='';
 $apellido2='';
 $contador=0;
+session_start();
 if(isset($_GET["user"])&&isset($_GET["pass"])){
 $usuario=$_GET["user"];
 $pass=$_GET["pass"];
@@ -60,6 +61,7 @@ try{
      
      $contador++;
     }
+    $_SESSION['userAlumno']=$user['matricula'];
   }
    
   
@@ -79,6 +81,7 @@ try{
      
      $contador++;
     }
+    $_SESSION['userProfesor']=$user['matricula'];
   }
    
   
@@ -98,6 +101,7 @@ try{
      
      $contador++;
     }
+    $_SESSION['user']=$user['matricula'];
   }
    
   

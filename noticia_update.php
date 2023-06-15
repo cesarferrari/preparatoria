@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="styles/ins_noticia.css">
+        <link rel="stylesheet" href="styles/notice.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://kit.fontawesome.com/6a4751c08d.js" crossorigin="anonymous"></script>
     </head>
@@ -29,7 +29,12 @@
                 </ul>
                     </nav>
             <div class="container">
-    
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
             <div class="lateral">
     <div class="option">
    
@@ -147,8 +152,8 @@
                 
            
            <div class="formulario">
-           <div class="center"> <h5>Eliminar</h5></div>
-           <div class="form_grupo">
+            <h2>Eliminar</h2>
+           <div class="form_group">
             <form    action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
             <select class="form_agrupa" name="seleccion" >
                 <?php 
@@ -165,40 +170,40 @@
                 ?>
                         </select>
             </div>
-                      <button class="btn_form" type="submit" name="btn_envia" value="Enviar">Enviar</button>
+                      <button class="button2" type="submit" name="btn_envia" value="Enviar">Enviar</button>
                           </div>
                         
                          
                           <div class="formularioX">
-                          <div class="center"><h5>Modificar</h5></div>
-           <div class="for_grupo">
+                          <h2>Modificar</h2>
+           <div class="form_grupo">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
         
-            <div class="for_grupo">
+            <div class="form_grupo">
            <label class="form_label" for="url">ID</label>
                 <input type="text" id="id" name="ID" placeholder="identificador #" > 
                 </div>
 
-            <div class="for_grupo">
+            <div class="form_grupo">
            <label class="form_label" for="url">URL</label>
                 <input type="text" id="nombre" name="url" placeholder="ingrese URL de la imagen" > 
                 </div>
-                <div class="for_grupo">
+                <div class="form_grupo">
            <label class="form_label" for="tipo">titulo</label>
                 <input type="text" id="nombre" name="titulo" placeholder="ingrese titulo de la noticia"   > 
                 </div>
-                <div class="for_grupo">
+                <div class="form_grupo">
            <label class="form_label" for="tipo">encabezado</label>
                 <input type="text" id="encabezado" name="encabezado" placeholder="encabezado de la nota"  > 
                 </div>
-             <div class="for_grupo">
+             <div class="form_grupo">
            <label class="form_label" for="noticia">noticia</label>
-            <textarea  autofocus maxleinght=200 name="noticia" id="" cols="30" rows="5"  ></textarea>
+            <textarea  autofocus maxleinght=200 name="noticia" id="" cols="90" rows="15"  ></textarea>
                 </div>
 
 
             </div>
-                      <button class="btn_form" type="submit" name="btn_modifica" value="Enviar">Enviar</button>
+                      <button class="button2" type="submit" name="btn_modifica" value="Enviar">Enviar</button>
                           </div>
 
                         </div>

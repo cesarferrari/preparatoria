@@ -28,7 +28,12 @@
                 </ul>
                 </nav>
         <div class="container">
-
+        <?php  session_start();
+                $sexion=$_SESSION['userProfesor'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
         <div class="lateral">
 <div class="option">
     <div class="logotipo">
@@ -69,20 +74,22 @@
 
         <?php
                require('conexion.php');
-               session_start();
+             
            
-               $r=$_SESSION['user'];
+             
                $name='';
-               $consulta=$base->prepare("select* from profesor where matricula ='$r'");
+               $consulta=$base->prepare("select* from profesor where matricula ='$sexion'");
                $consulta->execute(array());
                $usuario=$consulta->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($usuario as $key) {
-                    $name=$key['nombre']." ".$key['apellidoP']." ".$key['apellidoP'];
+                   $name=$key['nombre']." ".$key['apellidoP']." ".$key['apellidoP'];
+                   
                 }
+                echo $name;
                ?>
            <div class="left">
             <h3>
-            <?php echo $_SESSION['user']; ?></h3>
+            <?php echo $_SESSION['userProfesor']; ?></h3>
               <p>PAGINA PRINCIPAL PROFESOR EN CONSTRUCCION</p> 
                <br>
                <h3>             <?php echo $name;

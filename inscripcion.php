@@ -33,7 +33,12 @@
                 </ul>
                     </nav>
             <div class="container">
-    
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
             <div class="lateral">
            
     <div class="option">
@@ -137,9 +142,10 @@
                    
                    echo "<p>{$asignatura}</p>";
                 
-                   $sql_grupo="select id_insc,al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura
-                    insc inner join alumno al on al.id=insc.id_alumno inner join asignatura asig on
-                     asig.id_asignatura=insc.id_asignatura where asig.asignatura='{$asignatura}';";
+                   
+                     $sql_grupo="select id_insc,al.nombre,al.apellidoP,al.apellidoM,asig.asignatura,estatus from inscripcion_asignatura
+                     insc inner join alumno al on al.id=insc.id_alumno inner join asignatura asig on
+                      asig.id_asignatura=insc.id_asignatura where asig.asignatura='{$asignatura}';";
                    try{
                     $consult=$base->prepare($sql_grupo);
                     $consult->execute(array());

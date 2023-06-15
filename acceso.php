@@ -35,7 +35,12 @@
                 </ul>
                     </nav>
             <div class="container">
-    
+            <?php  session_start();
+                $sexion=$_SESSION['userAlumno'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
             <div class="lateral">
     <div class="option">
         <div class="logotipo">
@@ -80,11 +85,9 @@
             <div class="body">
                <?php
                require('conexion.php');
-               session_start();
-               echo $_SESSION['user'];
-               $r=$_SESSION['user'];
+            
                $name='';
-               $consulta=$base->prepare("select* from alumno where matricula ='$r'");
+               $consulta=$base->prepare("select* from alumno ");
                $consulta->execute(array());
                $usuario=$consulta->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($usuario as $key) {

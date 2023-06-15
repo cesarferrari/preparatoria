@@ -22,13 +22,18 @@
                 </a>
                 <ul>
               
-                <li><a href="index.html">inicio</a></li>
+                <li><a href="destroy.php">inicio</a></li>
                 <li><a href="noticias.php">noticias</a></li>
                 </ul>
                     </nav>
             <div class="container">
     <div class="lateral">
-      
+    <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
     <div class="option">
         <div class="logotipo">
             <a href="acceso_SE.php">

@@ -32,7 +32,12 @@
                 </ul>
                     </nav>
             <div class="container">
-    
+            <?php  session_start();
+                $sexion=$_SESSION['user'];
+                if($sexion==null || $sexion=''){
+                    header('location:login.php');
+                }
+                ?>
             <div class="lateral">
             <div class="option">
         <div class="logotipo">
